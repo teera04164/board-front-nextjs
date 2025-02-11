@@ -1,14 +1,10 @@
+import { menuItems } from '@/constants/menu';
 import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
 
 export function Sidebar() {
     const router = useRouter();
     const pathname = usePathname();
-
-    const menuItems = [
-        { icon: '/icons/home.svg', label: 'Home', path: '/bord' },
-        { icon: '/icons/edit.svg', label: 'Our Blog', path: '/our-blog' },
-    ];
 
     const handleNavigation = (path: string) => {
         router.push(path);

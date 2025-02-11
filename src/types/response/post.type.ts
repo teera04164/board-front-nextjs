@@ -8,8 +8,8 @@ export interface PostDetail {
     content: string;
     user: User,
     community: Community,
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
     commentCount: number;
 }
 

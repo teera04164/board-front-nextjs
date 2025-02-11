@@ -41,7 +41,6 @@ export const usePostManagement = () => {
 
     const handleApiError = (error: any) => {
         handleError(error, true);
-        closeModal();
     }
 
     const handleCreatePost = async (value: PostRequest) => {

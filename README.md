@@ -1,4 +1,4 @@
-# Community Application
+# Webboard Application
 
 ## การติดตั้งและการใช้งาน
 

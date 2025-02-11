@@ -1,4 +1,5 @@
 "use client"
+import { menuItems } from "@/constants/menu";
 import { ROUTE_PATH } from "@/constants/route";
 import { useCheckAuth } from "@/hooks/useCheckAuth";
 import Image from "next/image"
@@ -72,9 +73,16 @@ export const Navbar = () => {
                         </button>
 
                         <ul className="menu mt-9">
-                            {/* Sidebar content here */}
-                            <li><a>Sidebar Item 1</a></li>
-                            <li><a>Sidebar Item 2</a></li>
+                            {
+                                menuItems.map((item) => (
+                                    <li key={item.label} onClick={() => router.push(item.path)}>
+                                        <a>
+                                            <Image src={item.icon} alt={item.label} width={24} height={24} />
+                                            <span>{item.label}</span>
+                                        </a>
+                                    </li>
+                                ))
+                            }
                         </ul>
                     </div>
 

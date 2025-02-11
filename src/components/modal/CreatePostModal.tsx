@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Modal } from "../common/modal/Modal";
 import { CommunityDropdown } from "@/components/dropdown/CommunityDropdown";
 import { Button } from "../common/button/Button";
-import { PostRequest } from "@/types/post.types";
 import { usePostQuery } from "@/hooks/query/usePosts";
+import { PostRequest } from "@/types/request/post.type";
 
 interface CreatePostModalProps {
     isOpen: boolean;

@@ -5,10 +5,12 @@ import { useDebounce } from '@/hooks/useDebounce';
 import PostNotfound from './PostNotfound';
 import { PostsResponse } from '@/types/response/post.type';
 import { ISearchState } from '@/hooks/usePostManagement';
+import { useAuthStore } from '@/stores/authStore';
 
 export type Post = {
     id: string;
     author: {
+        id: string;
         name: string;
         avatar: string;
     };
@@ -30,7 +32,7 @@ const PostList: React.FC<PostListProps> = ({
     onDeletePost,
     searchState,
 }) => {
-
+    const { user } = useAuthStore()
     const debouncedSearchText = useDebounce(searchState.searchText, 300);
     const { data: postResp } = usePostsQuery({
         page: 1,
@@ -44,6 +46,7 @@ const PostList: React.FC<PostListProps> = ({
             return {
                 id: post.id,
                 author: {
+                    id: post.user.id,
                     name: post.user.fullName,
                     avatar: post.user.image || '/default/avatar/path'
                 },
@@ -73,6 +76,7 @@ const PostList: React.FC<PostListProps> = ({
                             onEditPost={onEditPost}
                             onDeletePost={onDeletePost}
                             post={post}
+                            isAuthor={user?.id === post.author.id}
                         />
                         {idx < posts.length - 1 && <div className='h-px bg-gray-100' />}
                     </React.Fragment>

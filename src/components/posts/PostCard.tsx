@@ -9,9 +9,10 @@ interface PostCardProps {
     onEditPost: (postId: string) => void;
     onDeletePost: (postId: string) => void;
     post: Post;
+    isAuthor: boolean;
 }
 
-const PostCard: React.FC<PostCardProps> = ({ post, onEditPost, onDeletePost }) => {
+const PostCard: React.FC<PostCardProps> = ({ post, onEditPost, onDeletePost, isAuthor }) => {
     const router = useRouter();
     return (
         <div className="p-5 relative">
@@ -39,16 +40,19 @@ const PostCard: React.FC<PostCardProps> = ({ post, onEditPost, onDeletePost }) =
                 </div>
 
             </div>
-            <div className="absolute top-5 right-5">
-                <div className="flex gap-4">
-                    <button className="flex items-center gap-1 text-gray-500" onClick={() => onEditPost(post.id)}>
-                        <RiEditLine size={20} />
-                    </button>
-                    <button className="flex items-center gap-1 text-gray-500" onClick={() => onDeletePost(post.id)}>
-                        <FaRegTrashAlt size={16} />
-                    </button>
-                </div>
-            </div>
+            {
+                isAuthor && (<div className="absolute top-5 right-5">
+                    <div className="flex gap-4">
+                        <button className="flex items-center gap-1 text-gray-500" onClick={() => onEditPost(post.id)}>
+                            <RiEditLine size={20} />
+                        </button>
+                        <button className="flex items-center gap-1 text-gray-500" onClick={() => onDeletePost(post.id)}>
+                            <FaRegTrashAlt size={16} />
+                        </button>
+                    </div>
+                </div>)
+            }
+
         </div>
     )
 }

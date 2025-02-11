@@ -30,8 +30,6 @@ yarn dev
 
 ## โครงสร้างโปรเจค (Project Structure)
 
-โปรเจคถูกแบ่งออกเป็นโฟลเดอร์หลักๆ ดังนี้:
-
 ### `app/`
 - โฟลเดอร์หลักของ Next.js 13+ App Router
 - จัดการ Routing และ Layout หลักของแอพพลิเคชั่น
@@ -99,34 +97,6 @@ yarn dev
   - String formatting
   - Class name utilities
 
-
-## สถาปัตยกรรมของแอปพลิเคชัน
-
-แอปพลิเคชันถูกพัฒนาด้วย Next.js และมีการจัดโครงสร้างดังนี้:
-
-### โครงสร้างหลัก
-- **Services Layer**: จัดการการเรียก API และการติดต่อกับ Backend
-  - ใช้ Axios สำหรับการทำ HTTP requests
-  - มีการจัดการ Interceptors สำหรับการจัดการ Authentication
-  - แยก Service ตาม Domain (auth, post, comment, community)
-
-- **State Management**:
-  - ใช้ Zustand สำหรับการจัดการ Global State
-  - มีการจัดเก็บข้อมูล Authentication ใน Local Storage
-  - ใช้ React Query สำหรับการจัดการ Server State
-
-- **Error Handling**:
-  - มีระบบจัดการ Error แบบรวมศูนย์
-  - แยกประเภท Error ตามรหัส HTTP Status
-  - มีการแสดงผล Error ผ่าน Toast notifications
-
-### Custom Hooks
-1. `useCheckAuth`: จัดการการตรวจสอบสถานะการ Authentication
-2. `useDebounce`: จัดการการหน่วงเวลาสำหรับการ Search
-3. `useBreakpoint`: จัดการ Responsive Design
-4. `useErrorHandler`: จัดการ Error handling แบบรวมศูนย์
-5. `usePostManagement`: จัดการการทำงานเกี่ยวกับโพสต์
-
 ## Libraries และ Packages ที่ใช้
 
 ### Core Libraries
@@ -145,11 +115,6 @@ yarn dev
     - กำหนดเวลา Cache ได้ผ่าน staleTime และ cacheTime
     - ลดการเรียก API ซ้ำๆ โดยใช้ข้อมูลจาก Cache
     - รองรับการ Invalidate Cache เมื่อข้อมูลมีการอัพเดท
-  
-  - **การจัดการ Background Updates**:
-    - Auto-refetching เมื่อ User กลับมาที่แท็บ
-    - Polling อัตโนมัติ (refetchInterval)
-    - Retry และ Error Boundaries อัตโนมัติ
 
 ### UI และ Styling
 - **Tailwind CSS**: CSS Framework
@@ -158,9 +123,6 @@ yarn dev
 
 - **DaisyUI**: Component Library สำหรับ Tailwind CSS
   - ให้ Components พื้นฐานที่สวยงาม
-  - มี Theme system ในตัว
-  - ลดเวลาในการเขียน CSS
-  - Customizable ได้ง่าย
 
 - **react-toastify**: แสดง Notifications
   - ใช้แสดง Success/Error messages
@@ -179,3 +141,9 @@ yarn dev
 2. ใช้ Axios Interceptor เพื่อแนบ Token ในทุก Request
 3. มีระบบตรวจสอบ Token และ Redirect อัตโนมัติ
 4. รองรับการ Logout และล้าง Cache
+
+## สิ่งที่ต้อง imprement เพิ่ม
+- หน้า our-blog ทำไม่เสร็จ
+- ทำ infinite scroll ทั้ง post เเละ comment
+
+## โปรด Feedback การส่งงานของผมด้วยครับ

@@ -13,6 +13,7 @@ export function SignInForm() {
     }>({
         username: '',
     });
+
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
     const authStore = useAuthStore();
@@ -34,9 +35,6 @@ export function SignInForm() {
         }
     };
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    }
 
     return (
         <>
@@ -45,16 +43,15 @@ export function SignInForm() {
                     <div className='w-full flex justify-start mb-10'>
                         <h1 className="text-3xl font-bold text-center mt-8 text-white">Sign In</h1>
                     </div>
-                    <form className="w-full">
+                    <div className="w-full">
                         <input
                             type="text"
                             placeholder="username"
                             className="input input-bordered w-full mb-5"
                             disabled={isLoading}
-                           onChange={handleInputChange}
+                            onChange={(event) => setFormData({ ...formData, username: event.target.value })}
                         />
                         <button
-                            type="submit"
                             className="btn btn-primary w-full text-white"
                             onClick={onSubmit}
                         >
@@ -67,7 +64,7 @@ export function SignInForm() {
                                 'Sign In'
                             )}
                         </button>
-                    </form>
+                    </div>
                 </div>
             </div>
 

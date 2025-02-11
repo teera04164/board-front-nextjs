@@ -1,6 +1,6 @@
-import { AuthResponse } from '@/types/api.types';
+import { AuthResponse } from '@/types/response/auth.type';
 import { axiosInstance } from './axios';
-import { User } from './types/auth';
+import { UserProfileResponse } from '@/types/response/user.type';
 
 export const authService = {
   async login(username: string): Promise<AuthResponse> {
@@ -10,17 +10,8 @@ export const authService = {
     return response.data
   },
 
-  async register(data: {
-    username: string;
-    fullName: string;
-    image?: string;
-  }): Promise<AuthResponse> {
-    const response = await axiosInstance.post<AuthResponse>('/auth/register', data);
-    return response.data;
-  },
-
-  async getProfile(): Promise<User> {
-    const response = await axiosInstance.get<User>('/auth/me');
+  async getProfile(): Promise<UserProfileResponse> {
+    const response = await axiosInstance.get<UserProfileResponse>('/auth/me');
     return response.data;
   },
 

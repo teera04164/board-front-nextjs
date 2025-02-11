@@ -1,14 +1,12 @@
 import BordDetailPage from "@/modules/bord-detail/BordDetailPage";
 
 interface PageProps {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;
 }
 
-const page = ({ params }: PageProps) => {
-  const id = params.id;
-  return <BordDetailPage id={id}/>;
+const page = async ({ params }: PageProps) => {
+  const resolvedParams = await params;
+  return <BordDetailPage id={resolvedParams.id} />;
 };
 
 export default page;

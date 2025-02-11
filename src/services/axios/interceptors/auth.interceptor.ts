@@ -1,10 +1,10 @@
 import { AxiosInstance } from 'axios';
-import *  as StorageUtil from '@/utils/storage';
+import { useAuthStore } from '@/stores/authStore';
 
 export const setupAuthInterceptor = (instance: AxiosInstance) => {
     instance.interceptors.request.use(
         (config) => {
-            const token = StorageUtil.getAccessToken();
+            const token = useAuthStore.getState().accessToken;
             if (token) {
                 config.headers.Authorization = `Bearer ${token}`;
             }

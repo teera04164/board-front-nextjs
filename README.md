@@ -4,7 +4,7 @@
 
 1. Clone โปรเจค
 ```bash
-git clone <repository-url>
+git clone [<repository-url>](https://github.com/teera04164/board-front-nextjs.git)
 cd <project-directory>
 ```
 

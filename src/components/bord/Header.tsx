@@ -1,10 +1,10 @@
-import React from "react";
-import { CommunityDropdown } from "@/components/dropdown/CommunityDropdown";
-import { SearchState } from "@/stores/types";
-import { useBreakpoint } from "@/hooks/useBreakpoint";
-import { SearchBar } from "./SearchBar";
-import { useCheckAuth } from "@/hooks/useCheckAuth";
-import { Button } from "../common/button/Button";
+import React from 'react';
+import { CommunityDropdown } from '@/components/dropdown/CommunityDropdown';
+import { SearchState } from '@/stores/types';
+import { useBreakpoint } from '@/hooks/useBreakpoint';
+import { SearchBar } from './SearchBar';
+import { useCheckAuth } from '@/hooks/useCheckAuth';
+import { Button } from '../common/button/Button';
 
 interface IHeader {
   searchState: SearchState;
@@ -15,7 +15,7 @@ interface IHeader {
 }
 
 const Header = ({ searchState, setSearchText, setSearching, onCommunityChange, onCreatePost }: IHeader) => {
-  const mdUp = useBreakpoint("md");
+  const mdUp = useBreakpoint('md');
   const { isAuthenticated } = useCheckAuth();
   return (
     <div>

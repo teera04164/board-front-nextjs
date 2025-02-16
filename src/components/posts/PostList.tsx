@@ -1,8 +1,8 @@
-import React from "react";
-import PostCard from "./PostCard";
-import PostNotfound from "./PostNotfound";
-import { PostDetail } from "@/types/response/post.type";
-import { useAuthStore } from "@/stores/authStore";
+import React from 'react';
+import PostCard from './PostCard';
+import PostNotfound from './PostNotfound';
+import { PostDetail } from '@/types/response/post.type';
+import { useAuthStore } from '@/stores/authStore';
 interface PostListProps {
   onEditPost: (postId: string) => void;
   onDeletePost: (postId: string) => void;

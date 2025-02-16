@@ -1,7 +1,7 @@
-import { useMenusItem } from "@/hooks/useMenusItem";
-import { cn } from "@/utils/classname";
-import Image from "next/image";
-import { useRouter, usePathname } from "next/navigation";
+import { useMenusItem } from '@/hooks/useMenusItem';
+import { cn } from '@/utils/classname';
+import Image from 'next/image';
+import { useRouter, usePathname } from 'next/navigation';
 
 export const Sidebar: React.FC = () => {
   const router = useRouter();
@@ -18,7 +18,7 @@ export const Sidebar: React.FC = () => {
                 <Image src={item.icon} alt={item.label} width={24} height={24} />
                 <span
                   className={cn({
-                    "font-bold": pathname === item.path,
+                    'font-bold': pathname === item.path,
                   })}
                 >
                   {item.label}

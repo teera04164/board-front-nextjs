@@ -1,5 +1,5 @@
-import { Button } from "@/components/common/button/Button";
-import { Modal } from "@/components/common/modal/Modal";
+import { Button } from '@/components/common/button/Button';
+import { Modal } from '@/components/common/modal/Modal';
 
 interface AddCommentModalProps {
   isOpen: boolean;
@@ -11,7 +11,7 @@ interface AddCommentModalProps {
 
 export function AddCommentModal({ isOpen, onClose, comment, setComment, onAddComment }: AddCommentModalProps) {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title={"Add Comments"} size="sm" showCloseButton={true}>
+    <Modal isOpen={isOpen} onClose={onClose} title={'Add Comments'} size="sm" showCloseButton={true}>
       <textarea
         value={comment}
         onChange={(event) => setComment(event.target.value)}

@@ -1,4 +1,4 @@
-import { UserProfileResponse } from "./user.type";
+import { UserProfileResponse } from './user.type';
 
 export interface AuthResponse {
   user: UserProfileResponse;

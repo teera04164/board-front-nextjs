@@ -1,8 +1,8 @@
-import Image from "next/image";
-import React from "react";
+import Image from 'next/image';
+import React from 'react';
 
 // const DEFAULT_AVATAR = '/images/default-avt.png'
-const DEFAULT_AVATAR = "/icons/unknow-user.svg";
+const DEFAULT_AVATAR = '/icons/unknow-user.svg';
 
 export interface AvatarImageProps {
   src?: string;

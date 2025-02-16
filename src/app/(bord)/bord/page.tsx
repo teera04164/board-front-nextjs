@@ -1,4 +1,4 @@
-import BordPage from "@/modules/bord/BordPage";
+import BordPage from '@/modules/bord/BordPage';
 
 const page = () => {
   return <BordPage />;

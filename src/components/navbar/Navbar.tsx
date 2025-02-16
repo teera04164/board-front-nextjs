@@ -1,11 +1,11 @@
-"use client";
-import { ROUTE_PATH } from "@/constants/route";
-import { useCheckAuth } from "@/hooks/useCheckAuth";
-import { useMenusItem } from "@/hooks/useMenusItem";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
+'use client';
+import { ROUTE_PATH } from '@/constants/route';
+import { useCheckAuth } from '@/hooks/useCheckAuth';
+import { useMenusItem } from '@/hooks/useMenusItem';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 export const Navbar = () => {
   const { user, logout } = useCheckAuth();
@@ -31,7 +31,7 @@ export const Navbar = () => {
                   <span>{user.fullName}</span>
                   <div className="avatar">
                     <div className="w-10 rounded-full">
-                      <Image src={user?.image || "/icons/user.svg"} alt="avatar" width={40} height={40} />
+                      <Image src={user?.image || '/icons/user.svg'} alt="avatar" width={40} height={40} />
                     </div>
                   </div>
                 </div>

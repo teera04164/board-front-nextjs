@@ -1,7 +1,7 @@
-import Image from "next/image";
-import AvatarImage from "@/components/common/image/AvatarImage";
-import { fromNow } from "@/utils/date";
-import { PostDetail } from "@/types/response/post.type";
+import Image from 'next/image';
+import AvatarImage from '@/components/common/image/AvatarImage';
+import { fromNow } from '@/utils/date';
+import { PostDetail } from '@/types/response/post.type';
 interface PostContentProps {
   onBack: () => void;
   post: PostDetail;

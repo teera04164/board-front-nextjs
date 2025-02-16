@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { Modal } from "../common/modal/Modal";
-import { CommunityDropdown } from "@/components/dropdown/CommunityDropdown";
-import { Button } from "../common/button/Button";
-import { usePostQuery } from "@/hooks/query/usePosts";
-import { PostRequest } from "@/types/request/post.type";
+import { useEffect, useState } from 'react';
+import { Modal } from '../common/modal/Modal';
+import { CommunityDropdown } from '@/components/dropdown/CommunityDropdown';
+import { Button } from '../common/button/Button';
+import { usePostQuery } from '@/hooks/query/usePosts';
+import { PostRequest } from '@/types/request/post.type';
 
 interface CreatePostModalProps {
   isOpen: boolean;
@@ -19,13 +19,13 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({
   onClose,
   onSubmit,
   isLoading,
-  postId = "",
+  postId = '',
   isEditMode = false,
 }) => {
   const [formData, setFormData] = useState({
-    community: "",
-    title: "",
-    content: "",
+    community: '',
+    title: '',
+    content: '',
   });
 
   const { data: post } = usePostQuery(postId);
@@ -33,9 +33,9 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({
   useEffect(() => {
     if (isEditMode && post) {
       setFormData({
-        community: post.community.id || "",
-        title: post.title || "",
-        content: post.content || "",
+        community: post.community.id || '',
+        title: post.title || '',
+        content: post.content || '',
       });
     }
   }, [isEditMode, post]);
@@ -48,8 +48,8 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({
     });
   };
 
-  const title = isEditMode ? "Edit Post" : "Create Post";
-  const btnLabel = isEditMode ? "Update" : "Post";
+  const title = isEditMode ? 'Edit Post' : 'Create Post';
+  const btnLabel = isEditMode ? 'Update' : 'Post';
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={title} size="lg">

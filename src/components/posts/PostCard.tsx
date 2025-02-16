@@ -1,9 +1,9 @@
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { FaRegTrashAlt } from "react-icons/fa";
-import { RiEditLine } from "react-icons/ri";
-import AvatarImage from "../common/image/AvatarImage";
-import { PostDetail } from "@/types/response/post.type";
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { FaRegTrashAlt } from 'react-icons/fa';
+import { RiEditLine } from 'react-icons/ri';
+import AvatarImage from '../common/image/AvatarImage';
+import { PostDetail } from '@/types/response/post.type';
 
 interface PostCardProps {
   onEditPost: (postId: string) => void;

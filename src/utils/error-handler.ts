@@ -1,6 +1,6 @@
-import { AxiosError } from "axios";
-import { ERROR_CODES, ERROR_MESSAGES } from "@/constants/error";
-import { ApiErrorResponse, ErrorResult } from "@/types/api.types";
+import { AxiosError } from 'axios';
+import { ERROR_CODES, ERROR_MESSAGES } from '@/constants/error';
+import { ApiErrorResponse, ErrorResult } from '@/types/api.types';
 
 const createErrorResult = (code: string, message: string, status: number, errors?: string[]): ErrorResult => ({
   code,
@@ -42,7 +42,7 @@ const handleNetworkError = (): ErrorResult => handleError(ERROR_CODES.NETWORK_ER
 
 export const getErrorMessage = (error: unknown): ErrorResult => {
   if (error instanceof AxiosError) {
-    if (error.code === "ERR_NETWORK") {
+    if (error.code === 'ERR_NETWORK') {
       return handleNetworkError();
     }
 

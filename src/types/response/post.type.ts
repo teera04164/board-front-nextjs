@@ -1,6 +1,6 @@
-import { Community } from "./community.type";
-import { Pagination } from "./pagination.type";
-import { User } from "./user.type";
+import { Community } from './community.type';
+import { Pagination } from './pagination.type';
+import { User } from './user.type';
 
 export interface PostDetail {
   id: string;

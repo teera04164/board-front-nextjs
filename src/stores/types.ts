@@ -1,4 +1,4 @@
-import { ModalType } from "@/constants/modal";
+import { ModalType } from '@/constants/modal';
 
 export interface SearchState {
   searchText: string;

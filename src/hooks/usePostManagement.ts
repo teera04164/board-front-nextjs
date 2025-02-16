@@ -1,9 +1,9 @@
-import { toast } from "react-toastify";
-import { useCreatePostMutation, useUpdatePostMutation, useDeletePostMutation } from "@/hooks/query/usePosts";
-import { useErrorHandler } from "./useErrorHandler";
-import { ModalType } from "@/constants/modal";
-import { useModalStore } from "@/stores/modalStore";
-import { PostRequest, UpdatePostRequest } from "@/types/request/post.type";
+import { toast } from 'react-toastify';
+import { useCreatePostMutation, useUpdatePostMutation, useDeletePostMutation } from '@/hooks/query/usePosts';
+import { useErrorHandler } from './useErrorHandler';
+import { ModalType } from '@/constants/modal';
+import { useModalStore } from '@/stores/modalStore';
+import { PostRequest, UpdatePostRequest } from '@/types/request/post.type';
 
 export interface ISearchState {
   searchText: string;
@@ -63,9 +63,9 @@ export const usePostManagement = () => {
   const handleSuccess = (type: ModalType) => {
     closeModal();
     const messages: { [key in ModalType]: string } = {
-      [ModalType.CREATE_POST]: "Post created successfully",
-      [ModalType.UPDATE_POST]: "Post updated successfully",
-      [ModalType.DELETE_POST]: "Post deleted successfully",
+      [ModalType.CREATE_POST]: 'Post created successfully',
+      [ModalType.UPDATE_POST]: 'Post updated successfully',
+      [ModalType.DELETE_POST]: 'Post deleted successfully',
     };
     toast.success(messages[type]);
   };

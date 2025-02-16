@@ -1,8 +1,8 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { postService } from "@/services/post.service";
-import { QUERY_KEYS } from "@/constants/queryKey";
-import { PostRequest, PostSearchRequest, UpdatePostRequest } from "@/types/request/post.type";
-import type { QueryClient } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { postService } from '@/services/post.service';
+import { QUERY_KEYS } from '@/constants/queryKey';
+import { PostRequest, PostSearchRequest, UpdatePostRequest } from '@/types/request/post.type';
+import type { QueryClient } from '@tanstack/react-query';
 
 const invalidatePostsQueries = (queryClient: QueryClient) => {
   queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.POSTS] });

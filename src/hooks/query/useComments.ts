@@ -1,7 +1,7 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { QUERY_KEYS } from "@/constants/queryKey";
-import { commentService } from "@/services/comment.service";
-import { createCommentRequest } from "@/types/request/comment.type";
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { QUERY_KEYS } from '@/constants/queryKey';
+import { commentService } from '@/services/comment.service';
+import { createCommentRequest } from '@/types/request/comment.type';
 
 export const useCommentsQuery = (postId: string) => {
   return useQuery({

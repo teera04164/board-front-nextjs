@@ -1,8 +1,8 @@
-import { useCommentsQuery } from "@/hooks/query/useComments";
-import React from "react";
-import { CommentWithUser } from "@/types/response/comment.type";
-import AvatarImage from "@/components/common/image/AvatarImage";
-import { fromNow } from "@/utils/date";
+import { useCommentsQuery } from '@/hooks/query/useComments';
+import React from 'react';
+import { CommentWithUser } from '@/types/response/comment.type';
+import AvatarImage from '@/components/common/image/AvatarImage';
+import { fromNow } from '@/utils/date';
 
 type ICommentList = {
   postId: string;

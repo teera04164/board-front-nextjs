@@ -1,17 +1,17 @@
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { getErrorMessage } from "@/utils/error-handler";
-import { toast } from "react-toastify";
-import { authService } from "@/services/auth.service";
-import { useAuthStore } from "@/stores/authStore";
-import { ROUTE_PATH } from "@/constants/route";
-import { Button } from "@/components/common/button/Button";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { getErrorMessage } from '@/utils/error-handler';
+import { toast } from 'react-toastify';
+import { authService } from '@/services/auth.service';
+import { useAuthStore } from '@/stores/authStore';
+import { ROUTE_PATH } from '@/constants/route';
+import { Button } from '@/components/common/button/Button';
 
 export function SignInForm() {
   const [formData, setFormData] = useState<{
     username: string;
   }>({
-    username: "",
+    username: '',
   });
 
   const router = useRouter();
@@ -24,7 +24,7 @@ export function SignInForm() {
       const response = await authService.login(formData.username);
       if (response.user) {
         authStore.setAuth(response);
-        toast.success("Login success");
+        toast.success('Login success');
         router.push(ROUTE_PATH.BORD);
       }
     } catch (error) {
@@ -62,7 +62,7 @@ export function SignInForm() {
                   Signing in...
                 </>
               ) : (
-                "Sign In"
+                'Sign In'
               )}
             </Button>
           </div>

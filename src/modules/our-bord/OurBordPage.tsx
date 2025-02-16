@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import React from "react";
-import { CreatePostModal } from "@/components/modal/CreatePostModal";
-import { DeletePostModal } from "@/components/modal/DeletePostModal";
-import { usePostManagement } from "@/hooks/usePostManagement";
-import { ModalType } from "@/constants/modal";
-import { useModalStore } from "@/stores/modalStore";
-import { useSearchStore } from "@/stores/searchStore";
-import { BordContent } from "@/components/bord/BordContent";
-import { useDebounce } from "@/hooks/useDebounce";
-import { usePostsMeQuery } from "@/hooks/query/usePosts";
-import PostList from "@/components/posts/PostList";
+import React from 'react';
+import { CreatePostModal } from '@/components/modal/CreatePostModal';
+import { DeletePostModal } from '@/components/modal/DeletePostModal';
+import { usePostManagement } from '@/hooks/usePostManagement';
+import { ModalType } from '@/constants/modal';
+import { useModalStore } from '@/stores/modalStore';
+import { useSearchStore } from '@/stores/searchStore';
+import { BordContent } from '@/components/bord/BordContent';
+import { useDebounce } from '@/hooks/useDebounce';
+import { usePostsMeQuery } from '@/hooks/query/usePosts';
+import PostList from '@/components/posts/PostList';
 
 const OurBordPage: React.FC = () => {
   const { searchState, setSearchText, toggleCommunity, setSearching } = useSearchStore();

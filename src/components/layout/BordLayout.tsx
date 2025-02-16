@@ -1,6 +1,6 @@
-"use client";
-import React from "react";
-import { Sidebar } from "../sidebar/Sidebar";
+'use client';
+import React from 'react';
+import { Sidebar } from '../sidebar/Sidebar';
 
 interface BordLayoutProps {
   children: React.ReactNode;

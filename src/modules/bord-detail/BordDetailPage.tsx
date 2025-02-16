@@ -1,24 +1,24 @@
-"use client";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { CommentSection } from "./components/CommentSection";
-import { PostContent } from "./components/PostContent";
-import { AddCommentModal } from "./components/AddCommentModal";
-import { CommentList } from "./components/CommentList";
-import { usePostQuery } from "@/hooks/query/usePosts";
-import PostNotfound from "@/components/posts/PostNotfound";
-import { useAddCommentMutation } from "@/hooks/query/useComments";
-import { toast } from "react-toastify";
-import { useBreakpoint } from "@/hooks/useBreakpoint";
-import { useCheckAuth } from "@/hooks/useCheckAuth";
-import { Button } from "@/components/common/button/Button";
+'use client';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { CommentSection } from './components/CommentSection';
+import { PostContent } from './components/PostContent';
+import { AddCommentModal } from './components/AddCommentModal';
+import { CommentList } from './components/CommentList';
+import { usePostQuery } from '@/hooks/query/usePosts';
+import PostNotfound from '@/components/posts/PostNotfound';
+import { useAddCommentMutation } from '@/hooks/query/useComments';
+import { toast } from 'react-toastify';
+import { useBreakpoint } from '@/hooks/useBreakpoint';
+import { useCheckAuth } from '@/hooks/useCheckAuth';
+import { Button } from '@/components/common/button/Button';
 
 interface IBordDetailPage {
   id: string;
 }
 
 const BordDetailPage: React.FC<IBordDetailPage> = ({ id }) => {
-  const mdUp = useBreakpoint("md");
+  const mdUp = useBreakpoint('md');
   const { isAuthenticated } = useCheckAuth();
 
   const { data: post } = usePostQuery(id);
@@ -27,7 +27,7 @@ const BordDetailPage: React.FC<IBordDetailPage> = ({ id }) => {
 
   const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
   const router = useRouter();
-  const [commentText, setCommentText] = useState("");
+  const [commentText, setCommentText] = useState('');
   const [showAddCommentInput, setShowAddCommentInput] = useState(false);
 
   const onClickAddComment = async () => {
@@ -37,11 +37,11 @@ const BordDetailPage: React.FC<IBordDetailPage> = ({ id }) => {
           { postId: id, content: commentText },
           {
             onSuccess: () => {
-              setCommentText("");
+              setCommentText('');
               setIsCommentModalOpen(false);
               if (mdUp) {
-                toast.success("Comment added successfully", {
-                  position: "top-center",
+                toast.success('Comment added successfully', {
+                  position: 'top-center',
                   autoClose: 2000,
                 });
               }
@@ -75,7 +75,7 @@ const BordDetailPage: React.FC<IBordDetailPage> = ({ id }) => {
       <div className="h-full min-h-screen w-full bg-white px-4 pt-20">
         <div className="flex flex-col items-center justify-center">
           <div className="flex h-full w-full max-w-[798px] flex-col">
-            <PostContent post={post} onBack={() => router.push("/bord")} />
+            <PostContent post={post} onBack={() => router.push('/bord')} />
             {showAddCommentInput && isAuthenticated && (
               <CommentSection
                 onCancel={handleCancel}

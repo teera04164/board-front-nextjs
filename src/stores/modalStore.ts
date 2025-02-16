@@ -1,7 +1,7 @@
-import { create } from "zustand";
-import { devtools } from "zustand/middleware";
-import type { ModalState } from "./types";
-import { ModalType } from "@/constants/modal";
+import { create } from 'zustand';
+import { devtools } from 'zustand/middleware';
+import type { ModalState } from './types';
+import { ModalType } from '@/constants/modal';
 
 interface ModalStore {
   modalState: ModalState;
@@ -14,7 +14,7 @@ interface ModalStore {
 
 const initialState: ModalState = {
   type: null,
-  postId: "",
+  postId: '',
 };
 
 export const useModalStore = create<ModalStore>()(
@@ -22,16 +22,16 @@ export const useModalStore = create<ModalStore>()(
     (set) => ({
       modalState: initialState,
 
-      openCreateModal: () => set({ modalState: { type: ModalType.CREATE_POST, postId: "" } }, false, "openCreateModal"),
+      openCreateModal: () => set({ modalState: { type: ModalType.CREATE_POST, postId: '' } }, false, 'openCreateModal'),
 
       openEditModal: (postId: string) =>
-        set({ modalState: { type: ModalType.UPDATE_POST, postId } }, false, "openEditModal"),
+        set({ modalState: { type: ModalType.UPDATE_POST, postId } }, false, 'openEditModal'),
 
       openDeleteModal: (postId: string) =>
-        set({ modalState: { type: ModalType.DELETE_POST, postId } }, false, "openDeleteModal"),
+        set({ modalState: { type: ModalType.DELETE_POST, postId } }, false, 'openDeleteModal'),
 
-      closeModal: () => set({ modalState: initialState }, false, "closeModal"),
+      closeModal: () => set({ modalState: initialState }, false, 'closeModal'),
     }),
-    { name: "modal-store" },
+    { name: 'modal-store' },
   ),
 );

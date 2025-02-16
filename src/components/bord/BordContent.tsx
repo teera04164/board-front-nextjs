@@ -1,6 +1,6 @@
-import React from "react";
-import { SearchState } from "@/stores/types";
-import Header from "./Header";
+import React from 'react';
+import { SearchState } from '@/stores/types';
+import Header from './Header';
 
 interface BordContentProps {
   searchState: SearchState;

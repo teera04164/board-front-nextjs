@@ -1,5 +1,5 @@
-import { Modal } from "../common/modal/Modal";
-import { Button } from "../common/button/Button";
+import { Modal } from '../common/modal/Modal';
+import { Button } from '../common/button/Button';
 
 interface IDeletePostModal {
   isOpen: boolean;
@@ -9,12 +9,12 @@ interface IDeletePostModal {
   postId: string;
 }
 
-export const DeletePostModal: React.FC<IDeletePostModal> = ({ isOpen, onClose, onSubmit, isLoading, postId = "" }) => {
+export const DeletePostModal: React.FC<IDeletePostModal> = ({ isOpen, onClose, onSubmit, isLoading, postId = '' }) => {
   return (
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title={"Please confirm if you wish to delete the post"}
+      title={'Please confirm if you wish to delete the post'}
       size="sm"
       showCloseButton={false}
     >

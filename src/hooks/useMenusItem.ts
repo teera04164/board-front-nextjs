@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { useCheckAuth } from "./useCheckAuth";
-import { menuItems } from "@/constants/menu";
-import { MenuItem } from "@/types/constant.type";
+import { useEffect, useState } from 'react';
+import { useCheckAuth } from './useCheckAuth';
+import { menuItems } from '@/constants/menu';
+import { MenuItem } from '@/types/constant.type';
 
 export const useMenusItem = () => {
   const [menus, setMenus] = useState<MenuItem[]>([]);

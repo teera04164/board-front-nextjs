@@ -1,13 +1,13 @@
-import { ReactNode, useEffect } from "react";
-import { cn } from "@/utils/classname";
-import { IoMdClose } from "react-icons/io";
+import { ReactNode, useEffect } from 'react';
+import { cn } from '@/utils/classname';
+import { IoMdClose } from 'react-icons/io';
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
   className?: string;
-  size?: "sm" | "default" | "lg" | "xl";
+  size?: 'sm' | 'default' | 'lg' | 'xl';
   showCloseButton?: boolean;
   title?: string;
 }
@@ -17,18 +17,18 @@ export function Modal({
   onClose,
   children,
   className,
-  size = "default",
+  size = 'default',
   showCloseButton = true,
   title,
 }: ModalProps) {
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
 
@@ -39,12 +39,12 @@ export function Modal({
       <div className="modal" role="dialog" onClick={onClose} />
       <div
         className={cn(
-          "modal-box relative bg-white",
+          'modal-box relative bg-white',
           {
-            "md:max-w-sm": size === "sm",
-            "md:max-w-xl": size === "default",
-            "md:max-w-3xl": size === "lg",
-            "md:max-w-5xl": size === "xl",
+            'md:max-w-sm': size === 'sm',
+            'md:max-w-xl': size === 'default',
+            'md:max-w-3xl': size === 'lg',
+            'md:max-w-5xl': size === 'xl',
           },
           className,
         )}

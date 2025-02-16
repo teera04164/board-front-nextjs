@@ -1,4 +1,4 @@
-import { AuthResponse } from "./response/auth.type";
+import { AuthResponse } from './response/auth.type';
 
 export interface LoginCredentials {
   username: string;

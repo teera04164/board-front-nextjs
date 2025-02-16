@@ -1,9 +1,9 @@
-import { useState, useRef, useEffect } from "react";
-import Image from "next/image";
-import { cn } from "@/utils/classname";
-import { IoChevronDown } from "react-icons/io5";
-import { useBreakpoint } from "@/hooks/useBreakpoint";
-import { useCommunitiesQuery } from "@/hooks/query/useCommunities";
+import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
+import { cn } from '@/utils/classname';
+import { IoChevronDown } from 'react-icons/io5';
+import { useBreakpoint } from '@/hooks/useBreakpoint';
+import { useCommunitiesQuery } from '@/hooks/query/useCommunities';
 
 interface DropdownProps {
   value: string;
@@ -15,7 +15,7 @@ interface DropdownProps {
 }
 
 export const CommunityDropdown: React.FC<DropdownProps> = ({
-  title = "Community",
+  title = 'Community',
   className,
   triggerClassName,
   menuClassName,
@@ -25,7 +25,7 @@ export const CommunityDropdown: React.FC<DropdownProps> = ({
   const { data: communityList, isLoading, error } = useCommunitiesQuery();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const mdUp = useBreakpoint("md");
+  const mdUp = useBreakpoint('md');
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
 
   useEffect(() => {
@@ -39,8 +39,8 @@ export const CommunityDropdown: React.FC<DropdownProps> = ({
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   if (isLoading) {
@@ -59,7 +59,7 @@ export const CommunityDropdown: React.FC<DropdownProps> = ({
 
   const getName = (id: string | null) => {
     const community = communityList?.find((item) => item.id === id);
-    return community?.name || "";
+    return community?.name || '';
   };
 
   return (
@@ -67,24 +67,24 @@ export const CommunityDropdown: React.FC<DropdownProps> = ({
       {isOpen && !mdUp && (
         <div className="fixed inset-0 z-10 bg-black bg-opacity-50" onClick={() => setIsOpen(false)}></div>
       )}
-      <div ref={dropdownRef} className={cn("dropdown dropdown-end", className)}>
+      <div ref={dropdownRef} className={cn('dropdown dropdown-end', className)}>
         <div
           tabIndex={0}
           role="button"
-          className={cn("btn flex w-full min-w-8 justify-between", triggerClassName)}
+          className={cn('btn flex w-full min-w-8 justify-between', triggerClassName)}
           onClick={() => setIsOpen(!isOpen)}
         >
           <span>{getName(selectedValue) || title}</span>
           <IoChevronDown
-            className={cn("h-5 w-5 transition-transform", {
-              "rotate-180": isOpen,
+            className={cn('h-5 w-5 transition-transform', {
+              'rotate-180': isOpen,
             })}
           />
         </div>
         <ul
           tabIndex={0}
           className={cn(
-            "menu dropdown-content z-[11] rounded-lg bg-base-100 p-0 shadow",
+            'menu dropdown-content z-[11] rounded-lg bg-base-100 p-0 shadow',
             {
               block: isOpen,
               hidden: !isOpen,
@@ -96,7 +96,7 @@ export const CommunityDropdown: React.FC<DropdownProps> = ({
             <li key={item.id}>
               <a
                 onClick={() => handleSelectItem(item.id)}
-                className={cn("flex h-11 justify-between rounded-none p-0 px-4 py-2", {
+                className={cn('flex h-11 justify-between rounded-none p-0 px-4 py-2', {
                   active: selectedValue === item.id,
                 })}
               >

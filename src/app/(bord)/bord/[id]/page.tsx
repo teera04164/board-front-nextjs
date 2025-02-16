@@ -1,4 +1,4 @@
-import BordDetailPage from "@/modules/bord-detail/BordDetailPage";
+import BordDetailPage from '@/modules/bord-detail/BordDetailPage';
 
 interface PageProps {
   params: Promise<{ id: string }>;

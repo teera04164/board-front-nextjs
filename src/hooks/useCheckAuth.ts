@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
-import { useAuthStore } from "@/stores/authStore";
-import { authService } from "@/services/auth.service";
-import { ROUTE_PATH } from "@/constants/route";
-import { QUERY_KEYS } from "@/constants/queryKey";
+import { useEffect } from 'react';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
+import { useAuthStore } from '@/stores/authStore';
+import { authService } from '@/services/auth.service';
+import { ROUTE_PATH } from '@/constants/route';
+import { QUERY_KEYS } from '@/constants/queryKey';
 
 interface IUseCheckAuth {
   isRedirect?: boolean;

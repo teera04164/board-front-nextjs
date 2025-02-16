@@ -1,8 +1,6 @@
 "use client";
-import Image from "next/image";
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Sidebar } from "@/components/sidebar/Sidebar";
 import { CommentSection } from "./components/CommentSection";
 import { PostContent } from "./components/PostContent";
 import { AddCommentModal } from "./components/AddCommentModal";
@@ -12,6 +10,8 @@ import PostNotfound from "@/components/posts/PostNotfound";
 import { useAddCommentMutation } from "@/hooks/query/useComments";
 import { toast } from "react-toastify";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
+import { useCheckAuth } from "@/hooks/useCheckAuth";
+import { Button } from "@/components/common/button/Button";
 
 interface IBordDetailPage {
     id: string;
@@ -20,47 +20,16 @@ interface IBordDetailPage {
 const BordDetailPage: React.FC<IBordDetailPage> = ({ id }) => {
 
     const mdUp = useBreakpoint('md');
+    const { isAuthenticated } = useCheckAuth();
 
-    const {
-        data: post,
-        isLoading,
-        isError,
-        error,
-    } = usePostQuery(id);
+    const { data: post } = usePostQuery(id);
 
-    const {
-        mutate: addComment,
-        isPending: isAddCommentLoading,
-        isError: isAddCommentError,
-        error: addCommentError,
-
-    } = useAddCommentMutation();
+    const { mutate: addComment } = useAddCommentMutation();
 
     const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
-    const [openModal, setOpenModal] = useState(false);
     const router = useRouter();
     const [commentText, setCommentText] = useState('');
     const [showAddCommentInput, setShowAddCommentInput] = useState(false);
-
-    const handleCloseModal = () => {
-        setOpenModal(false);
-    }
-
-    // if (isLoading) {
-    //     return (
-    //         <div className="flex justify-center items-center min-h-screen">
-    //             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900" />
-    //         </div>
-    //     );
-    // }
-
-    // if (isError) {
-    //     return (
-    //         <div className="flex justify-center items-center min-h-screen">
-    //             <div className="text-red-500">{error.message}</div>
-    //         </div>
-    //     );
-    // }
 
     const onClickAddComment = async () => {
         try {
@@ -111,21 +80,26 @@ const BordDetailPage: React.FC<IBordDetailPage> = ({ id }) => {
                     <div className="w-full max-w-[798px] h-full flex flex-col">
                         <PostContent post={post} onBack={() => router.push('/bord')} />
                         {
-                            showAddCommentInput && (
-                                <CommentSection onCancel={handleCancel} onClickAddComment={onClickAddComment} commentText={commentText} setCommentText={setCommentText} onAddComment={() => setIsCommentModalOpen(true)} />
+                            showAddCommentInput && isAuthenticated && (
+                                <CommentSection
+                                    onCancel={handleCancel}
+                                    onClickAddComment={onClickAddComment}
+                                    commentText={commentText}
+                                    setCommentText={setCommentText}
+                                />
                             )
                         }
                         {
-                            mdUp && !showAddCommentInput && (
+                            !showAddCommentInput && isAuthenticated && (
                                 <div className="mt-8">
-                                    <button
+                                    <Button
+                                        variant="outline-success"
                                         onClick={() => handleClickAddComment()}
-                                        className="btn btn-outline btn-success max-w-36"
+                                        className="max-w-36"
                                     >
                                         Add Comments
-                                    </button>
+                                    </Button>
                                 </div>)
-
                         }
 
                         <CommentList postId={id} />

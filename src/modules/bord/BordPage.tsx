@@ -2,12 +2,14 @@
 
 import React from 'react';
 import { CreatePostModal } from '@/components/modal/CreatePostModal';
-import { DeletePostModal } from '@/components/modal/DeletePostModal';
 import { usePostManagement } from '@/hooks/usePostManagement';
-import { BordContent } from './components/BordContent';
 import { ModalType } from '@/constants/modal';
 import { useModalStore } from '@/stores/modalStore';
 import { useSearchStore } from '@/stores/searchStore';
+import PostList from '@/components/posts/PostList';
+import { BordContent } from '@/components/bord/BordContent';
+import { useDebounce } from '@/hooks/useDebounce';
+import { usePostsQuery } from '@/hooks/query/usePosts';
 
 const BordPage: React.FC = () => {
 
@@ -29,12 +31,17 @@ const BordPage: React.FC = () => {
   const {
     isLoading,
     handleSubmitPost,
-    handleDeletePost,
   } = usePostManagement();
 
+  const debouncedSearchText = useDebounce(searchState.searchText, 500);
+  const { data: postResp } = usePostsQuery({
+    page: 1,
+    limit: 99999,
+    search: debouncedSearchText,
+    communityId: searchState.communityId,
+  })
 
-  const isCreateOrEditModalOpen = modalState.type === ModalType.CREATE_POST || modalState.type === ModalType.UPDATE_POST;
-  const isDeleteModalOpen = modalState.type === ModalType.DELETE_POST;
+  const isCreateModalOpen = modalState.type === ModalType.CREATE_POST
   const isEditModal = modalState.type === ModalType.UPDATE_POST;
 
   return (
@@ -45,28 +52,22 @@ const BordPage: React.FC = () => {
         setSearching={setSearching}
         onCommunityChange={toggleCommunity}
         onOpenCreateModal={openCreateModal}
-        onEditPost={openEditModal}
-        onDeletePost={openDeleteModal}
-      />
+      >
+        <PostList
+          posts={postResp?.posts || []}
+          onEditPost={openEditModal}
+          onDeletePost={openDeleteModal}
+        />
+      </BordContent>
 
-      {isCreateOrEditModalOpen && (
+      {isCreateModalOpen && (
         <CreatePostModal
           isEditMode={isEditModal}
           postId={modalState.postId}
           onSubmit={handleSubmitPost}
-          isOpen={isCreateOrEditModalOpen}
+          isOpen={isCreateModalOpen}
           onClose={closeModal}
           isLoading={isLoading}
-        />
-      )}
-
-      {isDeleteModalOpen && (
-        <DeletePostModal
-          isOpen={isDeleteModalOpen}
-          onClose={closeModal}
-          onSubmit={handleDeletePost}
-          isLoading={isLoading}
-          postId={modalState.postId}
         />
       )}
     </>

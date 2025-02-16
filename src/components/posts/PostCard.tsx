@@ -28,7 +28,10 @@ const PostCard: React.FC<PostCardProps> = ({ post, onEditPost, onDeletePost, isA
           <div className="badge mt-4 bg-[#F3F3F3] text-xs text-[#4A4A4A]">{post.community.name}</div>
         </div>
         <div className="flex-1">
-          <h2 onClick={() => router.push(`${ROUTE_PATH.BORD}/${post.id}`, { scroll: false })} className="mt-2 cursor-pointer font-semibold">
+          <h2
+            onClick={() => router.push(`${ROUTE_PATH.BORD}/${post.id}`, { scroll: false })}
+            className="mt-2 cursor-pointer font-semibold"
+          >
             {post.title}
           </h2>
           <p className="mt-1 line-clamp-2 text-gray-600">{post.content}</p>

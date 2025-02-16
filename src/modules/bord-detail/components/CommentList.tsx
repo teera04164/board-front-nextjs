@@ -1,12 +1,10 @@
-import { useCommentsQuery, useInfiniteCommentsQuery } from '@/hooks/query/useComments'
-import React, { useEffect, useMemo } from 'react'
-import { CommentsResponse, CommentWithUser } from '@/types/response/comment.type'
+import React from 'react'
+import { CommentWithUser } from '@/types/response/comment.type'
 import AvatarImage from '@/components/common/image/AvatarImage'
 import { fromNow } from '@/utils/date'
 import { getErrorMessage } from '@/utils/error-handler'
-import { useInView } from 'react-intersection-observer'
-import { RiLoader2Fill } from 'react-icons/ri'
 import { useLoadCommentsInfinite } from '@/hooks/useLoadCommentsInfinite'
+import { LoadMore } from '@/components/common/LoadMore'
 
 type ICommentList = {
   postId: string
@@ -47,13 +45,7 @@ export const CommentList: React.FC<ICommentList> = ({ postId }) => {
           </div>
         </div>
       ))}
-      <div ref={loadMoreRef} className="h-4">
-        {isFetchingNextPage && (
-          <div className="flex justify-center py-4">
-            <RiLoader2Fill className="w-6 h-6 animate-spin text-gray-500" />
-          </div>
-        )}
-      </div>
+      {isFetchingNextPage && loadMoreRef && <LoadMore isFetchingMore={isFetchingNextPage} loadMoreRef={loadMoreRef} />}
     </div>
   )
 }

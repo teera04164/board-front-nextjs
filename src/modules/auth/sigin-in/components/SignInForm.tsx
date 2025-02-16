@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { authService } from '@/services/auth.service';
 import { useAuthStore } from '@/stores/authStore';
 import { ROUTE_PATH } from '@/constants/route';
+import { Button } from '@/components/common/button/Button';
 
 export function SignInForm() {
 
@@ -51,9 +52,9 @@ export function SignInForm() {
                             disabled={isLoading}
                             onChange={(event) => setFormData({ ...formData, username: event.target.value })}
                         />
-                        <button
-                            className="btn btn-primary w-full text-white"
+                        <Button
                             onClick={onSubmit}
+                            className='w-full'
                         >
                             {isLoading ? (
                                 <>
@@ -63,7 +64,7 @@ export function SignInForm() {
                             ) : (
                                 'Sign In'
                             )}
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </div>

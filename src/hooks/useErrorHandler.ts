@@ -18,7 +18,7 @@ export const useErrorHandler = () => {
         }
 
         return errorResult;
-    }, []);
+    }, [router]);
 
     return { handleError };
 };

@@ -39,7 +39,7 @@ export const usePostManagement = () => {
         }
     };
 
-    const handleApiError = (error: any) => {
+    const handleApiError = (error: unknown) => {
         handleError(error, true);
     }
 

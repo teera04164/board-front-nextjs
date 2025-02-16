@@ -1,7 +1,12 @@
 import Image from 'next/image';
-import type { PostContentProps } from '../types';
 import AvatarImage from '@/components/common/image/AvatarImage';
 import { fromNow } from '@/utils/date';
+import { PostDetail } from '@/types/response/post.type';
+
+interface PostContentProps {
+  onBack: () => void;
+  post: PostDetail;
+}
 
 export function PostContent({ onBack, post }: PostContentProps) {
     return (

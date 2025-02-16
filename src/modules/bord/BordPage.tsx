@@ -16,13 +16,7 @@ const BordPage: React.FC = () => {
 
   const { isLoading, handleSubmitPost } = usePostManagement()
 
-  const {
-    allPosts,
-    isLoadingPosts,
-    isFetchingNextPage,
-    loadMoreRef,
-    hasNextPage,
-  } = useLoadPostInfinite(searchState)
+  const { allPosts, isLoadingPosts, isFetchingNextPage, loadMoreRef, hasNextPage } = useLoadPostInfinite(searchState)
 
   const isCreateModalOpen = modalState.type === ModalType.CREATE_POST
   const isEditModal = modalState.type === ModalType.UPDATE_POST

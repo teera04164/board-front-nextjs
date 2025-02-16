@@ -1,3 +1,4 @@
+import { Pagination } from './pagination.type'
 import { User } from './user.type'
 
 export interface Comment {
@@ -15,6 +16,7 @@ export interface CommentWithUser extends Comment {
 
 export interface CommentsResponse {
   comments: CommentWithUser[]
+  pagination: Pagination
 }
 
 export interface AddCommentResponse {

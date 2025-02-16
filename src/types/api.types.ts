@@ -12,6 +12,6 @@ export interface ErrorResult {
 }
 
 export interface PaginationRequest {
-  page: number
-  limit: number
+  page?: number
+  limit?: number
 }

@@ -1,8 +1,9 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { useQuery, useMutation, useQueryClient, useInfiniteQuery } from '@tanstack/react-query'
 import { postService } from '@/services/post.service'
 import { QUERY_KEYS } from '@/constants/queryKey'
 import { PostRequest, PostSearchRequest, UpdatePostRequest } from '@/types/request/post.type'
 import type { QueryClient } from '@tanstack/react-query'
+import { PostDetail, PostsResponse } from '@/types/response/post.type'
 
 const invalidatePostsQueries = (queryClient: QueryClient) => {
   queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.POSTS] })
@@ -13,6 +14,25 @@ export const usePostsQuery = (params: PostSearchRequest) => {
   return useQuery({
     queryKey: [QUERY_KEYS.POSTS, params],
     queryFn: () => postService.getAllPost(params),
+  })
+}
+
+export const useInfinitePostsQuery = ({ limit, search, communityId }: PostSearchRequest) => {
+  return useInfiniteQuery<PostsResponse>({
+    queryKey: [QUERY_KEYS.POSTS, { search, communityId }],
+    queryFn: ({ pageParam = 1 }) =>
+      postService.getAllPost({
+        page: Number(pageParam),
+        limit,
+        search: search as string,
+        communityId: communityId as string,
+      }),
+    getNextPageParam: (lastPage, allPages) => {
+      const totalPages = lastPage.pagination.totalPages
+      const nextPage = allPages.length + 1
+      return nextPage <= totalPages ? nextPage : undefined
+    },
+    initialPageParam: 1,
   })
 }
 

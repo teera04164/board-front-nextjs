@@ -8,23 +8,21 @@ import { useModalStore } from '@/stores/modalStore'
 import { useSearchStore } from '@/stores/searchStore'
 import PostList from '@/components/posts/PostList'
 import { BordContent } from '@/components/bord/BordContent'
-import { useDebounce } from '@/hooks/useDebounce'
-import { usePostsQuery } from '@/hooks/query/usePosts'
+import { useLoadPostInfinite } from '@/hooks/useLoadPostsInfinite'
 
 const BordPage: React.FC = () => {
   const { searchState, setSearchText, toggleCommunity, setSearching } = useSearchStore()
-
   const { modalState, openCreateModal, openEditModal, openDeleteModal, closeModal } = useModalStore()
 
   const { isLoading, handleSubmitPost } = usePostManagement()
 
-  const debouncedSearchText = useDebounce(searchState.searchText, 500)
-  const { data: postResp } = usePostsQuery({
-    page: 1,
-    limit: 99999,
-    search: debouncedSearchText,
-    communityId: searchState.communityId,
-  })
+  const {
+    allPosts,
+    isLoadingPosts,
+    isFetchingNextPage,
+    loadMoreRef,
+    hasNextPage,
+  } = useLoadPostInfinite(searchState)
 
   const isCreateModalOpen = modalState.type === ModalType.CREATE_POST
   const isEditModal = modalState.type === ModalType.UPDATE_POST
@@ -38,7 +36,15 @@ const BordPage: React.FC = () => {
         onCommunityChange={toggleCommunity}
         onOpenCreateModal={openCreateModal}
       >
-        <PostList posts={postResp?.posts || []} onEditPost={openEditModal} onDeletePost={openDeleteModal} />
+        <PostList
+          posts={allPosts || []}
+          onEditPost={openEditModal}
+          onDeletePost={openDeleteModal}
+          isLoading={isLoadingPosts}
+          hasNextPage={hasNextPage}
+          isFetchingMore={isFetchingNextPage}
+          loadMoreRef={loadMoreRef}
+        />
       </BordContent>
 
       {isCreateModalOpen && (

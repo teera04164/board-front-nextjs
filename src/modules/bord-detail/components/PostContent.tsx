@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import type { PostContentProps } from '../types';
 import AvatarImage from '@/components/common/image/AvatarImage';
+import { fromNow } from '@/utils/date';
 
 export function PostContent({ onBack, post }: PostContentProps) {
     return (
@@ -32,7 +33,7 @@ export function PostContent({ onBack, post }: PostContentProps) {
                     </figure>
                     <div className="flex gap-2 items-center">
                         <span className="text-center text-sm text-gray-500">{post.user.fullName}</span>
-                        <span className="text-center text-xs text-gray-400">5mo. ago</span>
+                        <span className="text-center text-xs text-gray-400">{fromNow(post.user.lastLogin)}</span>
                     </div>
                 </div>
                 <div className="badge bg-[#F3F3F3] text-[#4A4A4A] text-xs mt-4 border-none">

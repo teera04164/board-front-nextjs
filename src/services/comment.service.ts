@@ -1,6 +1,6 @@
 
 import { axiosInstance } from './axios';
-import { CommentsResponse } from '@/types/response/comment.type';
+import { AddCommentResponse, CommentsResponse } from '@/types/response/comment.type';
 import { createCommentRequest } from '@/types/request/comment.type';
 import { PostDetail } from '@/types/response/post.type';
 
@@ -10,8 +10,8 @@ export const commentService = {
     return response.data;
   },
 
-  async createComment(requestData: createCommentRequest): Promise<PostDetail> {
-    const response = await axiosInstance.post<PostDetail>(`/posts/${requestData.postId}/comments`, {
+  async createComment(requestData: createCommentRequest): Promise<AddCommentResponse> {
+    const response = await axiosInstance.post<AddCommentResponse>(`/posts/${requestData.postId}/comments`, {
       content: requestData.content,
     });
     return response.data;

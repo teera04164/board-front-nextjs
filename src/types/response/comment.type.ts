@@ -16,3 +16,12 @@ export interface CommentWithUser extends Comment {
 export interface CommentsResponse {
     comments: CommentWithUser[];
 }
+
+export interface AddCommentResponse {
+    content: string;
+    createdAt: string;
+    id: string;
+    postId: string;
+    updatedAt: string;
+    userId: string;
+}

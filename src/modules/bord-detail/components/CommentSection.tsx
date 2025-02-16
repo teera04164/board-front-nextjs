@@ -5,7 +5,7 @@ interface CommentSectionProps {
   onCancel: () => void
 }
 
-const CommentSection: React.FC<CommentSectionProps> = ({
+export const CommentSection: React.FC<CommentSectionProps> = ({
   commentText,
   setCommentText,
   onClickAddComment,

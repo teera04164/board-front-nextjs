@@ -112,11 +112,17 @@ yarn dev
 
 ## Libraries และ Packages ที่ใช้
 
-### Core Libraries
+### Libraries
 
 - **Next.js**: Framework หลักในการพัฒนา
 - **React**: Library สำหรับสร้าง UI
 - **TypeScript**: ใช้สำหรับเพิ่ม Type Safety
+- **react-query**: ใช้สำหรับ จัดการ data fetching และ caching
+- **axios**: ใช้สำหรับ http request
+- **prettier**: ใช้สำหรับ format code ทั้ง โปรเจ็ค
+- **react-intersection-observer**: ใช้สำหรับ trigger infinity loading
+- **react-hook-form**: สำหรับจัดการ form
+- **zod**: สำหรับ validate form
 
 ### State Management
 
@@ -153,19 +159,5 @@ yarn dev
   - Type Safety
   - Better IDE Support
   - Enhanced Code Documentation
-
-## การจัดการ Authentication
-
-ระบบ Authentication ใช้ JWT Token โดย:
-
-1. เก็บ Token ใน Zustand Store และ Local Storage
-2. ใช้ Axios Interceptor เพื่อแนบ Token ในทุก Request
-3. มีระบบตรวจสอบ Token และ Redirect อัตโนมัติ
-4. รองรับการ Logout และล้าง Cache
-
-## สิ่งที่ต้อง imprement เพิ่ม
-
-- หน้า our-blog ทำไม่เสร็จ
-- ทำ infinite scroll ทั้ง post เเละ comment
 
 ## โปรด Feedback การส่งงานของผมด้วยครับ

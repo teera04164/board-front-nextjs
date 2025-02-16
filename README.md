@@ -112,52 +112,18 @@ yarn dev
 
 ## Libraries และ Packages ที่ใช้
 
-### Libraries
-
 - **Next.js**: Framework หลักในการพัฒนา
 - **React**: Library สำหรับสร้าง UI
 - **TypeScript**: ใช้สำหรับเพิ่ม Type Safety
+- **Tailwind CSS**: CSS Framework
+- **DaisyUI**: Component Library สำหรับ Tailwind CSS
 - **react-query**: ใช้สำหรับ จัดการ data fetching และ caching
 - **axios**: ใช้สำหรับ http request
 - **prettier**: ใช้สำหรับ format code ทั้ง โปรเจ็ค
 - **react-intersection-observer**: ใช้สำหรับ trigger infinity loading
 - **react-hook-form**: สำหรับจัดการ form
 - **zod**: สำหรับ validate form
-
-### State Management
-
 - **Zustand**: จัดการ Global State
-
-  - ง่ายต่อการใช้งาน
-  - รองรับ TypeScript
-  - มี Middleware สำหรับจัดการ Persistence
-
-- **@tanstack/react-query**: จัดการ Server State และ Caching
-  - Cache ข้อมูลแบบอัตโนมัติโดยใช้ Query Key
-  - กำหนดเวลา Cache ได้ผ่าน staleTime และ cacheTime
-  - ลดการเรียก API ซ้ำๆ โดยใช้ข้อมูลจาก Cache
-  - รองรับการ Invalidate Cache เมื่อข้อมูลมีการอัพเดท
-
-### UI และ Styling
-
-- **Tailwind CSS**: CSS Framework
-
-  - ใช้สำหรับ Responsive Design
-  - Utility-first CSS
-
-- **DaisyUI**: Component Library สำหรับ Tailwind CSS
-
-  - ให้ Components พื้นฐานที่สวยงาม
-
 - **react-toastify**: แสดง Notifications
-  - ใช้แสดง Success/Error messages
-  - Customizable
-
-### Type Checking
-
-- **TypeScript**: เพิ่มความปลอดภัยในการเขียนโค้ด
-  - Type Safety
-  - Better IDE Support
-  - Enhanced Code Documentation
 
 ## โปรด Feedback การส่งงานของผมด้วยครับ

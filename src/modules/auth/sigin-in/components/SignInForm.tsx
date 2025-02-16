@@ -1,39 +1,39 @@
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { getErrorMessage } from '@/utils/error-handler';
-import { toast } from 'react-toastify';
-import { authService } from '@/services/auth.service';
-import { useAuthStore } from '@/stores/authStore';
-import { ROUTE_PATH } from '@/constants/route';
-import { Button } from '@/components/common/button/Button';
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { getErrorMessage } from '@/utils/error-handler'
+import { toast } from 'react-toastify'
+import { authService } from '@/services/auth.service'
+import { useAuthStore } from '@/stores/authStore'
+import { ROUTE_PATH } from '@/constants/route'
+import { Button } from '@/components/common/button/Button'
 
 export function SignInForm() {
   const [formData, setFormData] = useState<{
-    username: string;
+    username: string
   }>({
     username: '',
-  });
+  })
 
-  const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
-  const authStore = useAuthStore();
+  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
+  const authStore = useAuthStore()
 
   const onSubmit = async () => {
-    setIsLoading(true);
+    setIsLoading(true)
     try {
-      const response = await authService.login(formData.username);
+      const response = await authService.login(formData.username)
       if (response.user) {
-        authStore.setAuth(response);
-        toast.success('Login success');
-        router.push(ROUTE_PATH.BORD);
+        authStore.setAuth(response)
+        toast.success('Login success')
+        router.push(ROUTE_PATH.BORD)
       }
     } catch (error) {
-      const errorMessage = getErrorMessage(error);
-      toast.error(errorMessage.message);
+      const errorMessage = getErrorMessage(error)
+      toast.error(errorMessage.message)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   return (
     <>
@@ -69,5 +69,5 @@ export function SignInForm() {
         </div>
       </div>
     </>
-  );
+  )
 }

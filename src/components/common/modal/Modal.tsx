@@ -1,15 +1,15 @@
-import { ReactNode, useEffect } from 'react';
-import { cn } from '@/utils/classname';
-import { IoMdClose } from 'react-icons/io';
+import { ReactNode, useEffect } from 'react'
+import { cn } from '@/utils/classname'
+import { IoMdClose } from 'react-icons/io'
 
 interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  children: ReactNode;
-  className?: string;
-  size?: 'sm' | 'default' | 'lg' | 'xl';
-  showCloseButton?: boolean;
-  title?: string;
+  isOpen: boolean
+  onClose: () => void
+  children: ReactNode
+  className?: string
+  size?: 'sm' | 'default' | 'lg' | 'xl'
+  showCloseButton?: boolean
+  title?: string
 }
 
 export function Modal({
@@ -23,16 +23,16 @@ export function Modal({
 }: ModalProps) {
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden'
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = 'unset'
     }
     return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
+      document.body.style.overflow = 'unset'
+    }
+  }, [isOpen])
 
-  if (!isOpen) return null;
+  if (!isOpen) return null
 
   return (
     <div className="modal modal-open" role="dialog">
@@ -58,5 +58,5 @@ export function Modal({
         {children}
       </div>
     </div>
-  );
+  )
 }

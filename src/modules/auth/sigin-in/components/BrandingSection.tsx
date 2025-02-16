@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import React from 'react';
+import Image from 'next/image'
+import React from 'react'
 
 const BrandingSection = () => {
   return (
@@ -9,7 +9,7 @@ const BrandingSection = () => {
         <span className="text-2xl font-bold text-white">a Board</span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default BrandingSection;
+export default BrandingSection

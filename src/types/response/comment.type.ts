@@ -1,27 +1,27 @@
-import { User } from './user.type';
+import { User } from './user.type'
 
 export interface Comment {
-  id: string;
-  content: string;
-  userId: string;
-  postId: string;
-  createdAt: string;
-  updatedAt: string;
+  id: string
+  content: string
+  userId: string
+  postId: string
+  createdAt: string
+  updatedAt: string
 }
 
 export interface CommentWithUser extends Comment {
-  user: User;
+  user: User
 }
 
 export interface CommentsResponse {
-  comments: CommentWithUser[];
+  comments: CommentWithUser[]
 }
 
 export interface AddCommentResponse {
-  content: string;
-  createdAt: string;
-  id: string;
-  postId: string;
-  updatedAt: string;
-  userId: string;
+  content: string
+  createdAt: string
+  id: string
+  postId: string
+  updatedAt: string
+  userId: string
 }

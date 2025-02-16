@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import { Modal } from '../common/modal/Modal';
-import { CommunityDropdown } from '@/components/dropdown/CommunityDropdown';
-import { Button } from '../common/button/Button';
-import { usePostQuery } from '@/hooks/query/usePosts';
-import { PostRequest } from '@/types/request/post.type';
+import { useEffect, useState } from 'react'
+import { Modal } from '../common/modal/Modal'
+import { CommunityDropdown } from '@/components/dropdown/CommunityDropdown'
+import { Button } from '../common/button/Button'
+import { usePostQuery } from '@/hooks/query/usePosts'
+import { PostRequest } from '@/types/request/post.type'
 
 interface CreatePostModalProps {
-  isOpen: boolean;
-  isLoading?: boolean;
-  onClose: () => void;
-  onSubmit: (data: PostRequest) => void;
-  postId?: string;
-  isEditMode?: boolean;
+  isOpen: boolean
+  isLoading?: boolean
+  onClose: () => void
+  onSubmit: (data: PostRequest) => void
+  postId?: string
+  isEditMode?: boolean
 }
 
 export const CreatePostModal: React.FC<CreatePostModalProps> = ({
@@ -26,9 +26,9 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({
     community: '',
     title: '',
     content: '',
-  });
+  })
 
-  const { data: post } = usePostQuery(postId);
+  const { data: post } = usePostQuery(postId)
 
   useEffect(() => {
     if (isEditMode && post) {
@@ -36,20 +36,20 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({
         community: post.community.id || '',
         title: post.title || '',
         content: post.content || '',
-      });
+      })
     }
-  }, [isEditMode, post]);
+  }, [isEditMode, post])
 
   const handleSubmit = () => {
     onSubmit({
       title: formData.title,
       content: formData.content,
       communityId: formData.community,
-    });
-  };
+    })
+  }
 
-  const title = isEditMode ? 'Edit Post' : 'Create Post';
-  const btnLabel = isEditMode ? 'Update' : 'Post';
+  const title = isEditMode ? 'Edit Post' : 'Create Post'
+  const btnLabel = isEditMode ? 'Update' : 'Post'
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={title} size="lg">
@@ -88,5 +88,5 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({
         </div>
       </div>
     </Modal>
-  );
-};
+  )
+}

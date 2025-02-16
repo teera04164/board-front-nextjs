@@ -1,6 +1,6 @@
-import { axiosInstance } from './instance';
-import { setupAuthInterceptor } from './interceptors/auth.interceptor';
+import { axiosInstance } from './instance'
+import { setupAuthInterceptor } from './interceptors/auth.interceptor'
 
-setupAuthInterceptor(axiosInstance);
+setupAuthInterceptor(axiosInstance)
 
-export { axiosInstance };
+export { axiosInstance }

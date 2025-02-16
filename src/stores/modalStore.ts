@@ -1,21 +1,21 @@
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
-import type { ModalState } from './types';
-import { ModalType } from '@/constants/modal';
+import { create } from 'zustand'
+import { devtools } from 'zustand/middleware'
+import type { ModalState } from './types'
+import { ModalType } from '@/constants/modal'
 
 interface ModalStore {
-  modalState: ModalState;
+  modalState: ModalState
 
-  openCreateModal: () => void;
-  openEditModal: (postId: string) => void;
-  openDeleteModal: (postId: string) => void;
-  closeModal: () => void;
+  openCreateModal: () => void
+  openEditModal: (postId: string) => void
+  openDeleteModal: (postId: string) => void
+  closeModal: () => void
 }
 
 const initialState: ModalState = {
   type: null,
   postId: '',
-};
+}
 
 export const useModalStore = create<ModalStore>()(
   devtools(
@@ -34,4 +34,4 @@ export const useModalStore = create<ModalStore>()(
     }),
     { name: 'modal-store' },
   ),
-);
+)

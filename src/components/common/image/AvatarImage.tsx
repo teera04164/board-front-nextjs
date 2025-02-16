@@ -1,14 +1,14 @@
-import Image from 'next/image';
-import React from 'react';
+import Image from 'next/image'
+import React from 'react'
 
 // const DEFAULT_AVATAR = '/images/default-avt.png'
-const DEFAULT_AVATAR = '/icons/unknow-user.svg';
+const DEFAULT_AVATAR = '/icons/unknow-user.svg'
 
 export interface AvatarImageProps {
-  src?: string;
-  alt: string;
-  size: number;
-  className?: string;
+  src?: string
+  alt: string
+  size: number
+  className?: string
 }
 
 const AvatarImage: React.FC<AvatarImageProps> = ({ src, alt, size, className, ...props }) => {
@@ -25,7 +25,7 @@ const AvatarImage: React.FC<AvatarImageProps> = ({ src, alt, size, className, ..
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AvatarImage;
+export default AvatarImage

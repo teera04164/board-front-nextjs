@@ -1,7 +1,7 @@
-import OurBordPage from '@/modules/our-bord/OurBordPage';
+import OurBordPage from '@/modules/our-bord/OurBordPage'
 
 const page = () => {
-  return <OurBordPage />;
-};
+  return <OurBordPage />
+}
 
-export default page;
+export default page

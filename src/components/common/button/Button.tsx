@@ -1,6 +1,6 @@
-import { forwardRef } from 'react';
-import { ButtonHTMLAttributes } from 'react';
-import { cn } from '@/utils/classname';
+import { forwardRef } from 'react'
+import { ButtonHTMLAttributes } from 'react'
+import { cn } from '@/utils/classname'
 
 const styles = {
   baseStyles:
@@ -20,13 +20,13 @@ const styles = {
     lg: 'h-12 px-8',
     icon: 'h-10 w-10',
   },
-};
+}
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'outline' | 'success' | 'outline-success' | 'error' | 'outline-error' | 'ghost';
-  size?: 'default' | 'sm' | 'lg' | 'icon';
-  isLoading?: boolean;
-  fullWidth?: boolean;
+  variant?: 'default' | 'outline' | 'success' | 'outline-success' | 'error' | 'outline-error' | 'ghost'
+  size?: 'default' | 'sm' | 'lg' | 'icon'
+  isLoading?: boolean
+  fullWidth?: boolean
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -63,8 +63,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {isLoading ? <span className="loading loading-spinner"></span> : children}
       </button>
-    );
+    )
   },
-);
+)
 
-Button.displayName = 'Button';
+Button.displayName = 'Button'

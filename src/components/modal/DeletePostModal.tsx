@@ -1,12 +1,12 @@
-import { Modal } from '../common/modal/Modal';
-import { Button } from '../common/button/Button';
+import { Modal } from '../common/modal/Modal'
+import { Button } from '../common/button/Button'
 
 interface IDeletePostModal {
-  isOpen: boolean;
-  isLoading?: boolean;
-  onClose: () => void;
-  onSubmit: (postId: string) => void;
-  postId: string;
+  isOpen: boolean
+  isLoading?: boolean
+  onClose: () => void
+  onSubmit: (postId: string) => void
+  postId: string
 }
 
 export const DeletePostModal: React.FC<IDeletePostModal> = ({ isOpen, onClose, onSubmit, isLoading, postId = '' }) => {
@@ -32,5 +32,5 @@ export const DeletePostModal: React.FC<IDeletePostModal> = ({ isOpen, onClose, o
         </div>
       </div>
     </Modal>
-  );
-};
+  )
+}

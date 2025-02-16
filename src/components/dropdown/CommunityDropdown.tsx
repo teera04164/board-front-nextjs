@@ -1,17 +1,17 @@
-import { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
-import { cn } from '@/utils/classname';
-import { IoChevronDown } from 'react-icons/io5';
-import { useBreakpoint } from '@/hooks/useBreakpoint';
-import { useCommunitiesQuery } from '@/hooks/query/useCommunities';
+import { useState, useRef, useEffect } from 'react'
+import Image from 'next/image'
+import { cn } from '@/utils/classname'
+import { IoChevronDown } from 'react-icons/io5'
+import { useBreakpoint } from '@/hooks/useBreakpoint'
+import { useCommunitiesQuery } from '@/hooks/query/useCommunities'
 
 interface DropdownProps {
-  value: string;
-  onChange?: (value: string) => void;
-  title: string;
-  className?: string;
-  triggerClassName?: string;
-  menuClassName?: string;
+  value: string
+  onChange?: (value: string) => void
+  title: string
+  className?: string
+  triggerClassName?: string
+  menuClassName?: string
 }
 
 export const CommunityDropdown: React.FC<DropdownProps> = ({
@@ -22,45 +22,45 @@ export const CommunityDropdown: React.FC<DropdownProps> = ({
   onChange,
   value,
 }) => {
-  const { data: communityList, isLoading, error } = useCommunitiesQuery();
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const mdUp = useBreakpoint('md');
-  const [selectedValue, setSelectedValue] = useState<string | null>(null);
+  const { data: communityList, isLoading, error } = useCommunitiesQuery()
+  const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+  const mdUp = useBreakpoint('md')
+  const [selectedValue, setSelectedValue] = useState<string | null>(null)
 
   useEffect(() => {
-    setSelectedValue(value);
-  }, [value]);
+    setSelectedValue(value)
+  }, [value])
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
+        setIsOpen(false)
       }
-    };
+    }
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   if (isLoading) {
-    return <LoadingDropdown />;
+    return <LoadingDropdown />
   }
 
   if (error) {
-    return <ErrorDropdown />;
+    return <ErrorDropdown />
   }
 
   const handleSelectItem = (value: string) => {
-    setSelectedValue(value);
-    setIsOpen(false);
-    onChange?.(value);
-  };
+    setSelectedValue(value)
+    setIsOpen(false)
+    onChange?.(value)
+  }
 
   const getName = (id: string | null) => {
-    const community = communityList?.find((item) => item.id === id);
-    return community?.name || '';
-  };
+    const community = communityList?.find((item) => item.id === id)
+    return community?.name || ''
+  }
 
   return (
     <>
@@ -110,21 +110,21 @@ export const CommunityDropdown: React.FC<DropdownProps> = ({
         </ul>
       </div>
     </>
-  );
-};
+  )
+}
 
 const LoadingDropdown: React.FC = () => {
   return (
     <div className="flex min-h-screen items-center justify-center">
       <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900" />
     </div>
-  );
-};
+  )
+}
 
 const ErrorDropdown: React.FC = () => {
   return (
     <div className="flex min-h-screen items-center justify-center">
       <div className="text-red-500">Error loading communities</div>
     </div>
-  );
-};
+  )
+}

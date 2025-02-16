@@ -1,14 +1,14 @@
-import React from 'react';
-import { SearchState } from '@/stores/types';
-import Header from './Header';
+import React from 'react'
+import { SearchState } from '@/stores/types'
+import Header from './Header'
 
 interface BordContentProps {
-  searchState: SearchState;
-  setSearchText: (text: string) => void;
-  setSearching: (val: boolean) => void;
-  onCommunityChange: (communityId: string) => void;
-  onOpenCreateModal: () => void;
-  children?: React.ReactNode;
+  searchState: SearchState
+  setSearchText: (text: string) => void
+  setSearching: (val: boolean) => void
+  onCommunityChange: (communityId: string) => void
+  onOpenCreateModal: () => void
+  children?: React.ReactNode
 }
 
 export const BordContent: React.FC<BordContentProps> = ({
@@ -32,5 +32,5 @@ export const BordContent: React.FC<BordContentProps> = ({
         {children}
       </div>
     </div>
-  );
-};
+  )
+}

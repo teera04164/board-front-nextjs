@@ -1,6 +1,6 @@
 export type MenuItem = {
-  icon: string;
-  label: string;
-  path: string;
-  isPivate?: boolean;
-};
+  icon: string
+  label: string
+  path: string
+  isPivate?: boolean
+}

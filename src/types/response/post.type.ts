@@ -1,24 +1,24 @@
-import { Community } from './community.type';
-import { Pagination } from './pagination.type';
-import { User } from './user.type';
+import { Community } from './community.type'
+import { Pagination } from './pagination.type'
+import { User } from './user.type'
 
 export interface PostDetail {
-  id: string;
-  title: string;
-  content: string;
-  user: User;
-  community: Community;
-  createdAt: string;
-  updatedAt: string;
-  commentCount: number;
+  id: string
+  title: string
+  content: string
+  user: User
+  community: Community
+  createdAt: string
+  updatedAt: string
+  commentCount: number
 }
 
 export type PostDetailResponse = {
-  post: PostDetail;
-  comments: Comment[];
-};
+  post: PostDetail
+  comments: Comment[]
+}
 
 export interface PostsResponse {
-  pagination: Pagination;
-  posts: PostDetail[];
+  pagination: Pagination
+  posts: PostDetail[]
 }

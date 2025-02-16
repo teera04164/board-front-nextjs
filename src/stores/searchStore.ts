@@ -1,22 +1,22 @@
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
-import type { SearchState } from './types';
+import { create } from 'zustand'
+import { devtools } from 'zustand/middleware'
+import type { SearchState } from './types'
 
 interface SearchStore {
-  searchState: SearchState;
+  searchState: SearchState
 
-  setSearchText: (text: string) => void;
-  toggleCommunity: (communityId: string) => void;
-  clearSearch: () => void;
-  resetSearch: () => void;
-  setSearching: (isSearching: boolean) => void;
+  setSearchText: (text: string) => void
+  toggleCommunity: (communityId: string) => void
+  clearSearch: () => void
+  resetSearch: () => void
+  setSearching: (isSearching: boolean) => void
 }
 
 const initialState: SearchState = {
   searchText: '',
   communityId: '',
   isSearching: false,
-};
+}
 
 export const useSearchStore = create<SearchStore>()(
   devtools(
@@ -77,4 +77,4 @@ export const useSearchStore = create<SearchStore>()(
     }),
     { name: 'search-store' },
   ),
-);
+)

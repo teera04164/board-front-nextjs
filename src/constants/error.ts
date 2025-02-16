@@ -7,7 +7,7 @@ export const ERROR_CODES = {
   UNKNOWN_ERROR: 'UNKNOWN_ERROR',
   NETWORK_ERROR: 'NETWORK_ERROR',
   NOT_FOUND: 'NOT_FOUND',
-} as const;
+} as const
 
 export const ERROR_MESSAGES = {
   VALIDATION: 'ข้อมูลไม่ถูกต้อง',
@@ -18,4 +18,4 @@ export const ERROR_MESSAGES = {
   UNKNOWN_ERROR: 'เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ',
   NETWORK_ERROR: 'ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้ กรุณาตรวจสอบการเชื่อมต่อ',
   NOT_FOUND: 'ไม่พบข้อมูลที่ต้องการ',
-} as const;
+} as const

@@ -6,4 +6,4 @@ export const QUERY_KEYS = {
   COMMENTS: 'comments',
   AUTH_USER: 'auth-user',
   POSTS_ME: 'posts-me',
-};
+}

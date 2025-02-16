@@ -1,7 +1,7 @@
-import BordPage from '@/modules/bord/BordPage';
+import BordPage from '@/modules/bord/BordPage'
 
 const page = () => {
-  return <BordPage />;
-};
+  return <BordPage />
+}
 
-export default page;
+export default page

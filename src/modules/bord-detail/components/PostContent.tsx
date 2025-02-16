@@ -1,10 +1,10 @@
-import Image from 'next/image';
-import AvatarImage from '@/components/common/image/AvatarImage';
-import { fromNow } from '@/utils/date';
-import { PostDetail } from '@/types/response/post.type';
+import Image from 'next/image'
+import AvatarImage from '@/components/common/image/AvatarImage'
+import { fromNow } from '@/utils/date'
+import { PostDetail } from '@/types/response/post.type'
 interface PostContentProps {
-  onBack: () => void;
-  post: PostDetail;
+  onBack: () => void
+  post: PostDetail
 }
 
 export function PostContent({ onBack, post }: PostContentProps) {
@@ -42,5 +42,5 @@ export function PostContent({ onBack, post }: PostContentProps) {
         <span className="text-[12px] text-gray-300">{post.commentCount} Comments</span>
       </div>
     </section>
-  );
+  )
 }

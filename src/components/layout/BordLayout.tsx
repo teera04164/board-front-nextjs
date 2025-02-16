@@ -1,9 +1,9 @@
-'use client';
-import React from 'react';
-import { Sidebar } from '../sidebar/Sidebar';
+'use client'
+import React from 'react'
+import { Sidebar } from '../sidebar/Sidebar'
 
 interface BordLayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export const BordLayout: React.FC<BordLayoutProps> = ({ children }) => (
@@ -11,6 +11,6 @@ export const BordLayout: React.FC<BordLayoutProps> = ({ children }) => (
     <Sidebar />
     {children}
   </div>
-);
+)
 
-export default BordLayout;
+export default BordLayout

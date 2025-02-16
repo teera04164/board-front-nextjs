@@ -1,21 +1,21 @@
-'use client';
-import { ROUTE_PATH } from '@/constants/route';
-import { useCheckAuth } from '@/hooks/useCheckAuth';
-import { useMenusItem } from '@/hooks/useMenusItem';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { GiHamburgerMenu } from 'react-icons/gi';
+'use client'
+import { ROUTE_PATH } from '@/constants/route'
+import { useCheckAuth } from '@/hooks/useCheckAuth'
+import { useMenusItem } from '@/hooks/useMenusItem'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { GiHamburgerMenu } from 'react-icons/gi'
 
 export const Navbar = () => {
-  const { user, logout } = useCheckAuth();
-  const [isOpenDropdown, setIsDropdownOpen] = useState(false);
-  const router = useRouter();
-  const { menus } = useMenusItem();
+  const { user, logout } = useCheckAuth()
+  const [isOpenDropdown, setIsDropdownOpen] = useState(false)
+  const router = useRouter()
+  const { menus } = useMenusItem()
 
   const handleSignIn = () => {
-    router.push(ROUTE_PATH.LOGIN);
-  };
+    router.push(ROUTE_PATH.LOGIN)
+  }
 
   return (
     <div>
@@ -82,5 +82,5 @@ export const Navbar = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

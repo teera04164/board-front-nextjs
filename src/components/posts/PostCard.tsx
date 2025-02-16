@@ -1,19 +1,19 @@
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { FaRegTrashAlt } from 'react-icons/fa';
-import { RiEditLine } from 'react-icons/ri';
-import AvatarImage from '../common/image/AvatarImage';
-import { PostDetail } from '@/types/response/post.type';
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import { FaRegTrashAlt } from 'react-icons/fa'
+import { RiEditLine } from 'react-icons/ri'
+import AvatarImage from '../common/image/AvatarImage'
+import { PostDetail } from '@/types/response/post.type'
 
 interface PostCardProps {
-  onEditPost: (postId: string) => void;
-  onDeletePost: (postId: string) => void;
-  post: PostDetail;
-  isAuthor: boolean;
+  onEditPost: (postId: string) => void
+  onDeletePost: (postId: string) => void
+  post: PostDetail
+  isAuthor: boolean
 }
 
 const PostCard: React.FC<PostCardProps> = ({ post, onEditPost, onDeletePost, isAuthor }) => {
-  const router = useRouter();
+  const router = useRouter()
   return (
     <div className="relative p-5">
       <div className="flex flex-col">
@@ -52,7 +52,7 @@ const PostCard: React.FC<PostCardProps> = ({ post, onEditPost, onDeletePost, isA
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default PostCard;
+export default PostCard

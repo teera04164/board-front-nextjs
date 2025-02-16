@@ -1,8 +1,8 @@
 interface CommentSectionProps {
-  commentText: string;
-  setCommentText: (text: string) => void;
-  onClickAddComment: () => void;
-  onCancel: () => void;
+  commentText: string
+  setCommentText: (text: string) => void
+  onClickAddComment: () => void
+  onCancel: () => void
 }
 
 export function CommentSection({ commentText, setCommentText, onClickAddComment, onCancel }: CommentSectionProps) {
@@ -25,5 +25,5 @@ export function CommentSection({ commentText, setCommentText, onClickAddComment,
         </div>
       </div>
     </>
-  );
+  )
 }

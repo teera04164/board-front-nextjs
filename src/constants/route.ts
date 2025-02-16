@@ -4,4 +4,4 @@ export const ROUTE_PATH = {
   BORD: '/bord',
   OUR_BORD: '/our-bord',
   NOT_FOUND: '/404',
-};
+}

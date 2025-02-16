@@ -1,12 +1,12 @@
-import { Button } from '@/components/common/button/Button';
-import { Modal } from '@/components/common/modal/Modal';
+import { Button } from '@/components/common/button/Button'
+import { Modal } from '@/components/common/modal/Modal'
 
 interface AddCommentModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  comment: string;
-  setComment: (comment: string) => void;
-  onAddComment: () => void;
+  isOpen: boolean
+  onClose: () => void
+  comment: string
+  setComment: (comment: string) => void
+  onAddComment: () => void
 }
 
 export function AddCommentModal({ isOpen, onClose, comment, setComment, onAddComment }: AddCommentModalProps) {
@@ -27,5 +27,5 @@ export function AddCommentModal({ isOpen, onClose, comment, setComment, onAddCom
         </Button>
       </div>
     </Modal>
-  );
+  )
 }

@@ -1,17 +1,17 @@
-import React from 'react';
-import PostCard from './PostCard';
-import PostNotfound from './PostNotfound';
-import { PostDetail } from '@/types/response/post.type';
-import { useAuthStore } from '@/stores/authStore';
+import React from 'react'
+import PostCard from './PostCard'
+import PostNotfound from './PostNotfound'
+import { PostDetail } from '@/types/response/post.type'
+import { useAuthStore } from '@/stores/authStore'
 interface PostListProps {
-  onEditPost: (postId: string) => void;
-  onDeletePost: (postId: string) => void;
-  posts: PostDetail[];
-  isPrivatePage?: boolean;
+  onEditPost: (postId: string) => void
+  onDeletePost: (postId: string) => void
+  posts: PostDetail[]
+  isPrivatePage?: boolean
 }
 
 const PostList: React.FC<PostListProps> = ({ onEditPost, onDeletePost, posts, isPrivatePage = false }) => {
-  const { user } = useAuthStore();
+  const { user } = useAuthStore()
   return (
     <div className="mt-6 space-y-4">
       <article className="flex flex-col rounded-lg bg-white shadow transition-shadow hover:shadow-md">
@@ -29,7 +29,7 @@ const PostList: React.FC<PostListProps> = ({ onEditPost, onDeletePost, posts, is
         ))}
       </article>
     </div>
-  );
-};
+  )
+}
 
-export default PostList;
+export default PostList

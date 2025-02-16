@@ -1,22 +1,22 @@
-import React from 'react';
-import { CommunityDropdown } from '@/components/dropdown/CommunityDropdown';
-import { SearchState } from '@/stores/types';
-import { useBreakpoint } from '@/hooks/useBreakpoint';
-import { SearchBar } from './SearchBar';
-import { useCheckAuth } from '@/hooks/useCheckAuth';
-import { Button } from '../common/button/Button';
+import React from 'react'
+import { CommunityDropdown } from '@/components/dropdown/CommunityDropdown'
+import { SearchState } from '@/stores/types'
+import { useBreakpoint } from '@/hooks/useBreakpoint'
+import { SearchBar } from './SearchBar'
+import { useCheckAuth } from '@/hooks/useCheckAuth'
+import { Button } from '../common/button/Button'
 
 interface IHeader {
-  searchState: SearchState;
-  setSearchText: (text: string) => void;
-  setSearching: (isSearching: boolean) => void;
-  onCommunityChange: (communityId: string) => void;
-  onCreatePost: () => void;
+  searchState: SearchState
+  setSearchText: (text: string) => void
+  setSearching: (isSearching: boolean) => void
+  onCommunityChange: (communityId: string) => void
+  onCreatePost: () => void
 }
 
 const Header = ({ searchState, setSearchText, setSearching, onCommunityChange, onCreatePost }: IHeader) => {
-  const mdUp = useBreakpoint('md');
-  const { isAuthenticated } = useCheckAuth();
+  const mdUp = useBreakpoint('md')
+  const { isAuthenticated } = useCheckAuth()
   return (
     <div>
       <div className="flex items-center justify-between">
@@ -42,7 +42,7 @@ const Header = ({ searchState, setSearchText, setSearching, onCommunityChange, o
         ) : null}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

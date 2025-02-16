@@ -1,29 +1,29 @@
-'use client';
-import { cn } from '@/utils/classname';
-import { CiSearch } from 'react-icons/ci';
-import { useBreakpoint } from '@/hooks/useBreakpoint';
+'use client'
+import { cn } from '@/utils/classname'
+import { CiSearch } from 'react-icons/ci'
+import { useBreakpoint } from '@/hooks/useBreakpoint'
 
 interface ISearchBar {
-  isSearching: boolean;
-  setSearching: (isSearching: boolean) => void;
-  searchText: string;
-  setSearchText: (searchText: string) => void;
+  isSearching: boolean
+  setSearching: (isSearching: boolean) => void
+  searchText: string
+  setSearchText: (searchText: string) => void
 }
 
 export function SearchBar({ isSearching, setSearching, searchText, setSearchText }: ISearchBar) {
-  const mdUp = useBreakpoint('md');
+  const mdUp = useBreakpoint('md')
 
   const handleBlurSearch = () => {
     if (searchText === '') {
-      setSearching(false);
+      setSearching(false)
     }
-  };
+  }
 
   const handleSetSearching = (isSearch: boolean) => {
     if (!mdUp) {
-      setSearching(isSearch);
+      setSearching(isSearch)
     }
-  };
+  }
 
   return (
     <>
@@ -46,5 +46,5 @@ export function SearchBar({ isSearching, setSearching, searchText, setSearchText
         />
       </label>
     </>
-  );
+  )
 }

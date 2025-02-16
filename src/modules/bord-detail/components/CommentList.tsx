@@ -1,38 +1,36 @@
-import { useCommentsQuery } from '@/hooks/query/useComments';
-import React from 'react';
-import { CommentWithUser } from '@/types/response/comment.type';
-import AvatarImage from '@/components/common/image/AvatarImage';
-import { fromNow } from '@/utils/date';
+import { useCommentsQuery } from '@/hooks/query/useComments'
+import React from 'react'
+import { CommentWithUser } from '@/types/response/comment.type'
+import AvatarImage from '@/components/common/image/AvatarImage'
+import { fromNow } from '@/utils/date'
+import { getErrorMessage } from '@/utils/error-handler'
 
 type ICommentList = {
-  postId: string;
-};
+  postId: string
+}
 
 export const CommentList: React.FC<ICommentList> = ({ postId }) => {
-  const { data: commentResp, isLoading, isError, error } = useCommentsQuery(postId);
+  const {
+    data: commentResp,
+    isLoading,
+    isError,
+    error,
+  } = useCommentsQuery({
+    postId,
+    limit: 99999,
+    page: 1,
+  })
 
   if (isLoading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900" />
-      </div>
-    );
+    return <LoadingComment />
   }
 
   if (isError) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="text-red-500">{error.message}</div>
-      </div>
-    );
+    return <CommentError error={error} />
   }
 
   if (!commentResp?.comments) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="text-red-500">No comments found</div>
-      </div>
-    );
+    return null
   }
 
   return (
@@ -55,5 +53,25 @@ export const CommentList: React.FC<ICommentList> = ({ postId }) => {
           </div>
         ))}
     </div>
-  );
-};
+  )
+}
+
+interface ICommentError {
+  error: unknown | null
+}
+const CommentError: React.FC<ICommentError> = ({ error }) => {
+  const errorObj = getErrorMessage(error)
+  return (
+    <div className="mt-10 flex items-center justify-center">
+      <div className="text-red-500">{errorObj.message ?? ''}</div>
+    </div>
+  )
+}
+
+const LoadingComment: React.FC = () => {
+  return (
+    <div className="flex items-center justify-center">
+      <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900" />
+    </div>
+  )
+}

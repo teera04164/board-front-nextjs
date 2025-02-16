@@ -9,13 +9,19 @@ interface AddCommentModalProps {
   onAddComment: () => void
 }
 
-export function AddCommentModal({ isOpen, onClose, comment, setComment, onAddComment }: AddCommentModalProps) {
+export const AddCommentModal: React.FC<AddCommentModalProps> = ({
+  isOpen,
+  onClose,
+  comment,
+  setComment,
+  onAddComment,
+}) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={'Add Comments'} size="sm" showCloseButton={true}>
       <textarea
         value={comment}
         onChange={(event) => setComment(event.target.value)}
-        className="border-gray-[#DADADA] mt-5 h-24 w-full rounded-md border p-3 placeholder:text-sm focus:border-green-500 focus:outline-none"
+        className="border-gray mt-5 h-24 w-full rounded-md border p-3 placeholder:text-sm focus:border-green-500 focus:outline-none"
         placeholder="What's on your mind..."
       />
       <div className="mt-8 flex w-full flex-col gap-3">

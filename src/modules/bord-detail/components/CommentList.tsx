@@ -1,9 +1,8 @@
-import Image from 'next/image';
-import type { Comment } from '../types';
 import { useCommentsQuery } from '@/hooks/query/useComments';
 import React from 'react';
 import { CommentWithUser } from '@/types/response/comment.type';
 import AvatarImage from '@/components/common/image/AvatarImage';
+import { fromNow } from '@/utils/date';
 
 type ICommentList = {
   postId: string;
@@ -14,7 +13,7 @@ export const CommentList: React.FC<ICommentList> = ({
 }) => {
 
   const {
-    data: respComments,
+    data: commentResp,
     isLoading,
     isError,
     error,
@@ -37,7 +36,7 @@ export const CommentList: React.FC<ICommentList> = ({
     );
   }
 
-  if (!respComments?.comments) {
+  if (!commentResp?.comments) {
     return (
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-red-500">No comments found</div>
@@ -46,11 +45,9 @@ export const CommentList: React.FC<ICommentList> = ({
   }
 
 
-
-
   return (
     <div className="mt-8 space-y-6">
-      {Array.isArray(respComments.comments) && respComments.comments.map((comment: CommentWithUser) => (
+      {Array.isArray(commentResp.comments) && commentResp.comments.map((comment: CommentWithUser) => (
         <div key={comment.id} className="flex items-start space-x-4">
           <div className="avatar">
             <div className="w-10 h-10 rounded-full">
@@ -64,7 +61,7 @@ export const CommentList: React.FC<ICommentList> = ({
           <div className="w-full">
             <div className="flex gap-2 items-center">
               <p className="font-semibold text-sm">{comment.user.fullName}</p>
-              <p className="text-gray-300 text-xs">{comment.createdAt}</p>
+              <p className="text-gray-300 text-xs">{fromNow(comment.createdAt)}</p>
             </div>
             <p className="mt-2 text-gray-500 text-xs">{comment.content}</p>
           </div>

@@ -16,6 +16,18 @@ export const postService = {
     return response.data;
   },
 
+  async getAllPostMe(params: PostSearchRequest): Promise<PostsResponse> {
+    const response = await axiosInstance.get<PostsResponse>('/posts/me', {
+      params: {
+        limit: params.limit,
+        page: params.page,
+        search: params.search,
+        communityId: params.communityId,
+      },
+    });
+    return response.data;
+  },
+
   async createPost(requestBody: PostRequest): Promise<PostDetail> {
     const response = await axiosInstance.post<PostDetail>('/posts', requestBody);
     return response.data;

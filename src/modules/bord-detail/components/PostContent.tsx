@@ -7,7 +7,7 @@ interface PostContentProps {
   post: PostDetail
 }
 
-export function PostContent({ onBack, post }: PostContentProps) {
+export const PostContent: React.FC<PostContentProps> = ({ onBack, post }: PostContentProps) => {
   return (
     <section>
       <button

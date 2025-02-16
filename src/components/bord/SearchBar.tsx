@@ -10,7 +10,7 @@ interface ISearchBar {
   setSearchText: (searchText: string) => void
 }
 
-export function SearchBar({ isSearching, setSearching, searchText, setSearchText }: ISearchBar) {
+export const SearchBar: React.FC<ISearchBar> = ({ isSearching, setSearching, searchText, setSearchText }) => {
   const mdUp = useBreakpoint('md')
 
   const handleBlurSearch = () => {

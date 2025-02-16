@@ -12,7 +12,7 @@ interface ModalProps {
   title?: string
 }
 
-export function Modal({
+export const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
   children,
@@ -20,7 +20,7 @@ export function Modal({
   size = 'default',
   showCloseButton = true,
   title,
-}: ModalProps) {
+}) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'

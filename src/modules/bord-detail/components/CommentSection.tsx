@@ -5,7 +5,12 @@ interface CommentSectionProps {
   onCancel: () => void
 }
 
-export function CommentSection({ commentText, setCommentText, onClickAddComment, onCancel }: CommentSectionProps) {
+const CommentSection: React.FC<CommentSectionProps> = ({
+  commentText,
+  setCommentText,
+  onClickAddComment,
+  onCancel,
+}) => {
   return (
     <>
       <div className="mt-5">

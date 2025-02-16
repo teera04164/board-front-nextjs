@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { CommentSection } from './components/CommentSection'
 import { PostContent } from './components/PostContent'
-import { AddCommentModal } from './components/AddCommentModal'
+import { AddCommentModal } from '@/components/modal/AddCommentModal'
 import { CommentList } from './components/CommentList'
 import { usePostQuery } from '@/hooks/query/usePosts'
 import PostNotfound from '@/components/posts/PostNotfound'
@@ -12,6 +12,7 @@ import { toast } from 'react-toastify'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
 import { useCheckAuth } from '@/hooks/useCheckAuth'
 import { Button } from '@/components/common/button/Button'
+import { useErrorHandler } from '@/hooks/useErrorHandler'
 
 interface IBordDetailPage {
   id: string
@@ -20,6 +21,7 @@ interface IBordDetailPage {
 const BordDetailPage: React.FC<IBordDetailPage> = ({ id }) => {
   const mdUp = useBreakpoint('md')
   const { isAuthenticated } = useCheckAuth()
+  const { handleError } = useErrorHandler()
 
   const { data: post } = usePostQuery(id)
 
@@ -50,7 +52,7 @@ const BordDetailPage: React.FC<IBordDetailPage> = ({ id }) => {
         )
       }
     } catch (error) {
-      console.log(error)
+      handleError(error, true)
     }
   }
 

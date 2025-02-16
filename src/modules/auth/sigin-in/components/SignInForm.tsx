@@ -7,7 +7,7 @@ import { useAuthStore } from '@/stores/authStore'
 import { ROUTE_PATH } from '@/constants/route'
 import { Button } from '@/components/common/button/Button'
 
-export function SignInForm() {
+export const SignInForm: React.FC = () => {
   const [formData, setFormData] = useState<{
     username: string
   }>({

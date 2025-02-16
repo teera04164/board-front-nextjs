@@ -1,6 +1,6 @@
-import React from 'react';
-import { SearchState } from '@/stores/types';
-import Header from './Header';
+import React from "react";
+import { SearchState } from "@/stores/types";
+import Header from "./Header";
 
 interface BordContentProps {
   searchState: SearchState;
@@ -20,7 +20,7 @@ export const BordContent: React.FC<BordContentProps> = ({
   children,
 }) => {
   return (
-    <div className="w-full h-full pt-20 flex flex-col justify-center items-center px-4">
+    <div className="flex h-full w-full flex-col items-center justify-center px-4 pt-20">
       <div className="w-full max-w-[798px]">
         <Header
           searchState={searchState}

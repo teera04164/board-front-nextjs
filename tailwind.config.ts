@@ -14,12 +14,11 @@ export default {
         foreground: "var(--foreground)",
         success: "var(--success)",
         critical: "var(--critical)",
-        'green-100': '#D8E9E4',
-        'green-300': '#2B5F44',
-        'green-500': '#243831',
-        'gray-100': '#BBC2C0',
-        'gray-300': '#939494',
-        
+        "green-100": "#D8E9E4",
+        "green-300": "#2B5F44",
+        "green-500": "#243831",
+        "gray-100": "#BBC2C0",
+        "gray-300": "#939494",
       },
     },
   },
@@ -27,17 +26,15 @@ export default {
     themes: [
       {
         default: {
-          primary: '#49A569',
-          secondary: '#FF5722',
-          accent: '#FFC107',
-          neutral: '#1F2937',
-          'base-100': '#ffffff',
-          'green-300': '#2B5F44',
+          primary: "#49A569",
+          secondary: "#FF5722",
+          accent: "#FFC107",
+          neutral: "#1F2937",
+          "base-100": "#ffffff",
+          "green-300": "#2B5F44",
         },
       },
     ],
   },
-  plugins: [
-    require('daisyui'),
-  ],
+  plugins: [require("daisyui")],
 } satisfies Config;

@@ -1,6 +1,6 @@
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
-import type { SearchState } from './types';
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
+import type { SearchState } from "./types";
 
 interface SearchStore {
   searchState: SearchState;
@@ -13,8 +13,8 @@ interface SearchStore {
 }
 
 const initialState: SearchState = {
-  searchText: '',
-  communityId: '',
+  searchText: "",
+  communityId: "",
   isSearching: false,
 };
 
@@ -33,7 +33,7 @@ export const useSearchStore = create<SearchStore>()(
             },
           }),
           false,
-          'setSearchText'
+          "setSearchText",
         ),
 
       setSearching: (isSearching: boolean) =>
@@ -45,7 +45,7 @@ export const useSearchStore = create<SearchStore>()(
             },
           }),
           false,
-          'setSearching'
+          "setSearching",
         ),
 
       toggleCommunity: (communityId: string) =>
@@ -53,12 +53,11 @@ export const useSearchStore = create<SearchStore>()(
           (state) => ({
             searchState: {
               ...state.searchState,
-              communityId:
-                state.searchState.communityId === communityId ? '' : communityId,
+              communityId: state.searchState.communityId === communityId ? "" : communityId,
             },
           }),
           false,
-          'toggleCommunity'
+          "toggleCommunity",
         ),
 
       clearSearch: () =>
@@ -66,21 +65,16 @@ export const useSearchStore = create<SearchStore>()(
           (state) => ({
             searchState: {
               ...state.searchState,
-              searchText: '',
+              searchText: "",
               isSearching: false,
             },
           }),
           false,
-          'clearSearch'
+          "clearSearch",
         ),
 
-      resetSearch: () =>
-        set(
-          { searchState: initialState },
-          false,
-          'resetSearch'
-        ),
+      resetSearch: () => set({ searchState: initialState }, false, "resetSearch"),
     }),
-    { name: 'search-store' }
-  )
+    { name: "search-store" },
+  ),
 );

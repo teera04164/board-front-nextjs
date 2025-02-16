@@ -1,11 +1,10 @@
-
-import { axiosInstance } from './axios';
-import { PostDetail, PostsResponse } from '@/types/response/post.type';
-import { PostRequest, PostSearchRequest, UpdatePostRequest } from '@/types/request/post.type';
+import { axiosInstance } from "./axios";
+import { PostDetail, PostsResponse } from "@/types/response/post.type";
+import { PostRequest, PostSearchRequest, UpdatePostRequest } from "@/types/request/post.type";
 
 export const postService = {
   async getAllPost(params: PostSearchRequest): Promise<PostsResponse> {
-    const response = await axiosInstance.get<PostsResponse>('/posts', {
+    const response = await axiosInstance.get<PostsResponse>("/posts", {
       params: {
         limit: params.limit,
         page: params.page,
@@ -17,7 +16,7 @@ export const postService = {
   },
 
   async getAllPostMe(params: PostSearchRequest): Promise<PostsResponse> {
-    const response = await axiosInstance.get<PostsResponse>('/posts/me', {
+    const response = await axiosInstance.get<PostsResponse>("/posts/me", {
       params: {
         limit: params.limit,
         page: params.page,
@@ -29,7 +28,7 @@ export const postService = {
   },
 
   async createPost(requestBody: PostRequest): Promise<PostDetail> {
-    const response = await axiosInstance.post<PostDetail>('/posts', requestBody);
+    const response = await axiosInstance.post<PostDetail>("/posts", requestBody);
     return response.data;
   },
 
@@ -47,5 +46,4 @@ export const postService = {
     const response = await axiosInstance.delete<PostDetail>(`/posts/${id}`);
     return response.data;
   },
-
 };

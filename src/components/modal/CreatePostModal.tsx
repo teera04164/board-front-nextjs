@@ -6,94 +6,87 @@ import { usePostQuery } from "@/hooks/query/usePosts";
 import { PostRequest } from "@/types/request/post.type";
 
 interface CreatePostModalProps {
-    isOpen: boolean;
-    isLoading?: boolean;
-    onClose: () => void;
-    onSubmit: (data: PostRequest) => void;
-    postId?: string;
-    isEditMode?: boolean;
+  isOpen: boolean;
+  isLoading?: boolean;
+  onClose: () => void;
+  onSubmit: (data: PostRequest) => void;
+  postId?: string;
+  isEditMode?: boolean;
 }
 
+export const CreatePostModal: React.FC<CreatePostModalProps> = ({
+  isOpen,
+  onClose,
+  onSubmit,
+  isLoading,
+  postId = "",
+  isEditMode = false,
+}) => {
+  const [formData, setFormData] = useState({
+    community: "",
+    title: "",
+    content: "",
+  });
 
-export const CreatePostModal: React.FC<CreatePostModalProps> = ({ isOpen, onClose, onSubmit, isLoading, postId = '', isEditMode = false }) => {
-    const [formData, setFormData] = useState({
-        community: '',
-        title: '',
-        content: '',
+  const { data: post } = usePostQuery(postId);
+
+  useEffect(() => {
+    if (isEditMode && post) {
+      setFormData({
+        community: post.community.id || "",
+        title: post.title || "",
+        content: post.content || "",
+      });
+    }
+  }, [isEditMode, post]);
+
+  const handleSubmit = () => {
+    onSubmit({
+      title: formData.title,
+      content: formData.content,
+      communityId: formData.community,
     });
+  };
 
-    const { data: post } =  usePostQuery(postId);
+  const title = isEditMode ? "Edit Post" : "Create Post";
+  const btnLabel = isEditMode ? "Update" : "Post";
 
-    useEffect(() => {
-        if (isEditMode && post) {
-            setFormData({
-                community: post.community.id || '',
-                title: post.title || '',
-                content: post.content || '',
-            });
-        }
-    }, [isEditMode, post]);
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} title={title} size="lg">
+      <div className="space-y-3">
+        <CommunityDropdown
+          value={formData.community}
+          onChange={(value) => setFormData({ ...formData, community: value })}
+          title="Choose a community"
+          className="w-full md:max-w-52"
+          triggerClassName="btn-outline border-success text-success w-full md:max-w-52"
+          menuClassName="w-full"
+        />
 
-    const handleSubmit = () => {
-        onSubmit({
-            title: formData.title,
-            content: formData.content,
-            communityId: formData.community
-        });
-    };
+        <input
+          type="text"
+          placeholder="Title"
+          value={formData.title}
+          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+          className="input input-bordered w-full"
+        />
 
-    const title = isEditMode ? 'Edit Post' : 'Create Post';
-    const btnLabel = isEditMode ? 'Update' : 'Post';
+        <textarea
+          value={formData.content}
+          onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+          className="textarea textarea-bordered h-60 w-full md:h-24"
+          placeholder="What's on your mind..."
+        />
 
-
-    return (
-        <Modal
-            isOpen={isOpen}
-            onClose={onClose}
-            title={title}
-            size="lg"
-        >
-            <div className="space-y-3">
-                <CommunityDropdown
-                    value={formData.community}
-                    onChange={(value) => setFormData({ ...formData, community: value })}
-                    title="Choose a community"
-                    className="w-full md:max-w-52"
-                    triggerClassName="btn-outline border-success text-success w-full md:max-w-52"
-                    menuClassName="w-full"
-                />
-
-                <input
-                    type="text"
-                    placeholder="Title"
-                    value={formData.title}
-                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                    className="input input-bordered w-full"
-                />
-
-                <textarea
-                    value={formData.content}
-                    onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                    className="w-full h-60 md:h-24 textarea textarea-bordered"
-                    placeholder="What's on your mind..."
-                />
-
-                <div className="flex flex-col md:flex-row md:justify-end gap-3 mt-8">
-                    <Button
-                        variant="outline-success"
-                        onClick={onClose}
-                    >
-                        Close
-                    </Button>
-                    <Button
-                        variant="success"
-                        onClick={handleSubmit}
-                        isLoading={isLoading}
-                    >
-                        {btnLabel}
-                    </Button>
-                </div>
-            </div>
-        </Modal>
-    );
-}
+        <div className="mt-8 flex flex-col gap-3 md:flex-row md:justify-end">
+          <Button variant="outline-success" onClick={onClose}>
+            Close
+          </Button>
+          <Button variant="success" onClick={handleSubmit} isLoading={isLoading}>
+            {btnLabel}
+          </Button>
+        </div>
+      </div>
+    </Modal>
+  );
+};

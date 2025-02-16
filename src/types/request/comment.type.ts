@@ -1,5 +1,4 @@
-
 export interface createCommentRequest {
-    postId: string;
-    content: string;
+  postId: string;
+  content: string;
 }

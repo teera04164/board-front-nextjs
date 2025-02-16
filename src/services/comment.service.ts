@@ -1,8 +1,7 @@
-
-import { axiosInstance } from './axios';
-import { AddCommentResponse, CommentsResponse } from '@/types/response/comment.type';
-import { createCommentRequest } from '@/types/request/comment.type';
-import { PostDetail } from '@/types/response/post.type';
+import { axiosInstance } from "./axios";
+import { AddCommentResponse, CommentsResponse } from "@/types/response/comment.type";
+import { createCommentRequest } from "@/types/request/comment.type";
+import { PostDetail } from "@/types/response/post.type";
 
 export const commentService = {
   async getAllComments(postId: string): Promise<CommentsResponse> {

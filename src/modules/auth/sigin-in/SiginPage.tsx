@@ -1,15 +1,15 @@
 "use client";
-import React from 'react'
-import { SignInForm } from './components/SignInForm';
-import BrandingSection from './components/BrandingSection';
+import React from "react";
+import { SignInForm } from "./components/SignInForm";
+import BrandingSection from "./components/BrandingSection";
 
-const SiginPage = () => {    
-    return (
-        <>     
-            <SignInForm />
-            <BrandingSection />
-        </>
-    )
-}
+const SiginPage = () => {
+  return (
+    <>
+      <SignInForm />
+      <BrandingSection />
+    </>
+  );
+};
 
-export default SiginPage
+export default SiginPage;

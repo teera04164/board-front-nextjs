@@ -1,7 +1,6 @@
 import React from 'react';
-import Header from '@/modules/bord/components/Header';
-import PostList from '@/components/posts/PostList';
 import { SearchState } from '@/stores/types';
+import Header from './Header';
 
 interface BordContentProps {
   searchState: SearchState;
@@ -9,8 +8,7 @@ interface BordContentProps {
   setSearching: (val: boolean) => void;
   onCommunityChange: (communityId: string) => void;
   onOpenCreateModal: () => void;
-  onEditPost: (postId: string) => void;
-  onDeletePost: (postId: string) => void;
+  children?: React.ReactNode;
 }
 
 export const BordContent: React.FC<BordContentProps> = ({
@@ -19,8 +17,7 @@ export const BordContent: React.FC<BordContentProps> = ({
   setSearching,
   onCommunityChange,
   onOpenCreateModal,
-  onEditPost,
-  onDeletePost,
+  children,
 }) => {
   return (
     <div className="w-full h-full pt-20 flex flex-col justify-center items-center px-4">
@@ -32,11 +29,7 @@ export const BordContent: React.FC<BordContentProps> = ({
           onCommunityChange={onCommunityChange}
           onCreatePost={onOpenCreateModal}
         />
-        <PostList
-          searchState={searchState}
-          onEditPost={onEditPost}
-          onDeletePost={onDeletePost}
-        />
+        {children}
       </div>
     </div>
   );

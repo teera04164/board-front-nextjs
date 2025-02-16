@@ -1,8 +1,10 @@
 import React from "react";
-import { SearchBar } from "@/modules/bord/components/SearchBar";
 import { CommunityDropdown } from "@/components/dropdown/CommunityDropdown";
 import { SearchState } from "@/stores/types";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
+import { SearchBar } from "./SearchBar";
+import { useCheckAuth } from "@/hooks/useCheckAuth";
+import { Button } from "../common/button/Button";
 
 interface IHeader {
     searchState: SearchState;
@@ -20,6 +22,7 @@ const Header = ({
     onCreatePost
 }: IHeader) => {
     const mdUp = useBreakpoint("md");
+    const { isAuthenticated } = useCheckAuth();
     return (
         <div>
             <div className="flex justify-between items-center">
@@ -40,12 +43,15 @@ const Header = ({
                                 menuClassName="w-52"
                             />
                         </div>
-                        <button
-                            onClick={onCreatePost}
-                            className="md:block btn w-full btn-primary text-white max-w-28 px-0 pl-0 pr-0"
-                        >
-                            Create +
-                        </button>
+                        {
+                            isAuthenticated && (
+                                <Button
+                                    onClick={onCreatePost}
+                                >
+                                    Create +
+                                </Button>
+                            )
+                        }
                     </div>
                 ) : null}
             </div>

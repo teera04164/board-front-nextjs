@@ -29,7 +29,7 @@ export function SearchBar({ isSearching, setSearching, searchText, setSearchText
     <>
       <label
         onClick={() => handleSetSearching(true)}
-        className={cn('input md:w-full flex items-center gap-2 md:max-w-[535px] rounded-[8px] bg-transparent md:border-green-100', {
+        className={cn('input md:w-full flex items-center gap-2  rounded-[8px] bg-transparent md:border-green-100', {
           'w-full': isSearching,
         })}
       >

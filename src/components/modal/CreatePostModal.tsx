@@ -14,6 +14,7 @@ interface CreatePostModalProps {
     isEditMode?: boolean;
 }
 
+
 export const CreatePostModal: React.FC<CreatePostModalProps> = ({ isOpen, onClose, onSubmit, isLoading, postId = '', isEditMode = false }) => {
     const [formData, setFormData] = useState({
         community: '',
@@ -21,7 +22,7 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({ isOpen, onClos
         content: '',
     });
 
-    const { data: post, isLoading: isPostLoading } = postId ? usePostQuery(postId) : { data: null, isLoading: false };
+    const { data: post } =  usePostQuery(postId);
 
     useEffect(() => {
         if (isEditMode && post) {

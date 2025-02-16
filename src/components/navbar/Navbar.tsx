@@ -1,7 +1,7 @@
 "use client"
-import { menuItems } from "@/constants/menu";
 import { ROUTE_PATH } from "@/constants/route";
 import { useCheckAuth } from "@/hooks/useCheckAuth";
+import { useMenusItem } from "@/hooks/useMenusItem";
 import Image from "next/image"
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -11,6 +11,7 @@ export const Navbar = () => {
     const { user, logout } = useCheckAuth()
     const [isOpenDropdown, setIsDropdownOpen] = useState(false);
     const router = useRouter();
+    const { menus } = useMenusItem();
 
     const handleSignIn = () => {
         router.push(ROUTE_PATH.LOGIN)
@@ -71,10 +72,9 @@ export const Navbar = () => {
                                 height={12}
                             />
                         </button>
-
                         <ul className="menu mt-9">
                             {
-                                menuItems.map((item) => (
+                                menus.map((item) => (
                                     <li key={item.label} onClick={() => router.push(item.path)}>
                                         <a>
                                             <Image src={item.icon} alt={item.label} width={24} height={24} />
@@ -85,7 +85,6 @@ export const Navbar = () => {
                             }
                         </ul>
                     </div>
-
                 </div>
             </div>
         </div>

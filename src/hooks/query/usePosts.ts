@@ -3,7 +3,7 @@ import { postService } from '@/services/post.service'
 import { QUERY_KEYS } from '@/constants/queryKey'
 import { PostRequest, PostSearchRequest, UpdatePostRequest } from '@/types/request/post.type'
 import type { QueryClient } from '@tanstack/react-query'
-import { PostDetail, PostsResponse } from '@/types/response/post.type'
+import { PostsResponse } from '@/types/response/post.type'
 
 const invalidatePostsQueries = (queryClient: QueryClient) => {
   queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.POSTS] })

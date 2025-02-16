@@ -4,5 +4,6 @@ export const QUERY_KEYS = {
     POSTS: 'posts',
     POST: 'post',
     COMMENTS: 'comments',
-    AUTH_USER: 'auth-user'
+    AUTH_USER: 'auth-user',
+    POSTS_ME: 'posts-me',
 }

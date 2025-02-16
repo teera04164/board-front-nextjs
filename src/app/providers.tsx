@@ -9,8 +9,8 @@ const queryClient = new QueryClient();
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
-        <ToastContainer position="top-center" />
-          {children}
+      <ToastContainer position="top-center" autoClose={3000} />
+      {children}
     </QueryClientProvider>
   );
 }

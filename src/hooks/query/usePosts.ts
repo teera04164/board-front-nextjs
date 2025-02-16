@@ -2,6 +2,12 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { postService } from '@/services/post.service';
 import { QUERY_KEYS } from '@/constants/queryKey';
 import { PostRequest, PostSearchRequest, UpdatePostRequest } from '@/types/request/post.type';
+import type { QueryClient } from '@tanstack/react-query';
+
+const invalidatePostsQueries = (queryClient: QueryClient) => {
+    queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.POSTS] });
+    queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.POSTS_ME] });
+}
 
 export const usePostsQuery = (params: PostSearchRequest) => {
     return useQuery({
@@ -10,12 +16,19 @@ export const usePostsQuery = (params: PostSearchRequest) => {
     });
 };
 
+export const usePostsMeQuery = (params: PostSearchRequest) => {
+    return useQuery({
+        queryKey: [QUERY_KEYS.POSTS_ME, params],
+        queryFn: () => postService.getAllPostMe(params),
+    });
+};
+
 export const useCreatePostMutation = () => {
     const queryClient = useQueryClient();
     return useMutation({
         mutationFn: (requestBody: PostRequest) => postService.createPost(requestBody),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.POSTS] });
+            invalidatePostsQueries(queryClient);
         },
     });
 };
@@ -33,7 +46,7 @@ export const useUpdatePostMutation = () => {
     return useMutation({
         mutationFn: (requestBody: UpdatePostRequest) => postService.updatePost(requestBody),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.POSTS] });
+            invalidatePostsQueries(queryClient);
         },
     });
 };
@@ -43,7 +56,7 @@ export const useDeletePostMutation = () => {
     return useMutation({
         mutationFn: (id: string) => postService.deletePost(id),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.POSTS] });
+            invalidatePostsQueries(queryClient);
         },
     });
 };

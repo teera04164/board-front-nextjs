@@ -126,4 +126,3 @@ yarn dev
 - **Zustand**: จัดการ Global State
 - **react-toastify**: แสดง Notifications
 
-## โปรด Feedback การส่งงานของผมด้วยครับ
